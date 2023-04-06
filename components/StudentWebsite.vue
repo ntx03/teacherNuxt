@@ -1,10 +1,12 @@
 <template>
-    <div class="students__card">
-        <p class="students__header">{{ props.name }}</p>
-        <a class="students__image-container" :href="props.link" :title="props.title">
-            <img class="students__image" :src="`${props.linkImage}`" :alt="props.altImage" />
-        </a>
-    </div>
+    <ClientOnly>
+        <div class="students__card">
+            <p class="students__header">{{ props.name }}</p>
+            <a class="students__image-container" :href="props.link" :title="props.title">
+                <img class="students__image" :src="`${props.linkImage}`" :alt="props.altImage" />
+            </a>
+        </div>
+    </ClientOnly>
 </template>
 <script setup>
 console.log(props.linkImage);

@@ -22,10 +22,10 @@
                     <HeaderMenuItem :way="'/aboutme'" :text="'О СЕБЕ'" :onPage="about" />
                     <HeaderMenuItem :way="'/students'" :text="'УЧЕНИКАМ'" :onPage="student" />
                     <HeaderMenuItem :way="'/parents'" :text="'РОДИТЕЛЯМ'" :onPage="parents" />
-                    <HeaderMenuItem :way="'/colleagues/main'" :text="'КОЛЛЕГАМ'" />
+                    <HeaderMenuItem :way="'/colleagues'" :text="'КОЛЛЕГАМ'" :onPage="colleagues" />
                 </ul>
                 <ul class="header__menu-container header__menu-container_row">
-                    <HeaderMenuItem :way="'/video/main'" :text="'ВИДЕО'" />
+                    <HeaderMenuItem :way="'/video'" :text="'ВИДЕО'" :onPage="video" />
                     <HeaderMenuItem :way="'/photo'" :text="'ФОТО'" />
                     <HeaderMenuItem :way="'/contacts'" :text="'КОНТАКТЫ'" />
                     <HeaderMenuItem :way="'/news'" :text="'НОВОСТИ'" />
@@ -45,6 +45,8 @@ const main = ref(false);
 const about = ref(false);
 const student = ref(false);
 const parents = ref(false);
+const colleagues = ref(false);
+const video = ref(false);
 
 if (route.fullPath == "/") {
     main.value = true;
@@ -58,24 +60,19 @@ if (route.fullPath == "/students" || route.fullPath == "/studentsplatform" || ro
 if (route.fullPath == "/parents") {
     parents.value = true;
 }
+if (route.fullPath == "/colleagues" || route.fullPath == "/colleagueswork") {
+    colleagues.value = true;
+}
+if (route.fullPath == "/video" || route.fullPath == "/videoschool") {
+    video.value = true;
+}
 watch(route, () => {
-    if (route.fullPath == "/") {
-        main.value = true;
-    } else {
-        main.value = false;
-    }
-    if (route.fullPath == "/aboutme") {
-        about.value = true;
-    } else {
-        about.value = false;
-    }
-    if (route.fullPath == "/students" || route.fullPath == "/studentsplatform" || route.fullPath == "/studentsexamination") {
-        student.value = true;
-    } else {
-        student.value = false;
-    }
-    route.fullPath == "/aboutme" ? parents.value = true : parents.value = false;
-
+    route.fullPath == "/" ? main.value = true : main.value = false;
+    route.fullPath == "/aboutme" ? about.value = true : about.value = false;
+    route.fullPath == "/students" || route.fullPath == "/studentsplatform" || route.fullPath == "/studentsexamination" ? student.value = true : student.value = false;
+    route.fullPath == "/parents" ? parents.value = true : parents.value = false;
+    route.fullPath == "/colleagues" || route.fullPath == "/colleagueswork" ? colleagues.value = true : colleagues.value = false;
+    route.fullPath == "/video" || route.fullPath == "/videoschool" ? video.value = true : video.value = false;
 })
 
 </script>
