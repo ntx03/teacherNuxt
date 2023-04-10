@@ -1,7 +1,17 @@
 <script setup>
+import x from '../assets/Повышение квалификации/Артек (pdf.io).jpg';
 definePageMeta({
     layout: "header",
 })
+const popup = usePopup();
+const image = usePopupImage();
+const name = usePopupName();
+
+const openPopup = (e) => {
+    popup.value = true;
+    image.value = e.target.src;
+    name.value = e.target.alt;
+}
 </script>
 <template>
     <ClientOnly>
@@ -10,8 +20,8 @@ definePageMeta({
                 <div class="me__container">
                     <div class="me__container-biography">
                         <div class="me__image-container">
-                            <img id="s" class="me__image me__image-biography" onClick={handleClick}
-                                src="../assets/aboutMe.jpg" alt="фотография анны коротаевой" />
+                            <img id="s" class="me__image me__image-biography" @click="openPopup" src="../assets/aboutMe.jpg"
+                                alt="фотография анны коротаевой" />
                         </div>
                         <div class="me__container-text">
                             <p class="me__text">
@@ -55,7 +65,7 @@ definePageMeta({
                     <div class="me__container-documents">
                         <p class="me__title">Встреча с министром просвещения Кравцовым С.С., Артек, июль 2021 г.</p>
                         <div class="me__card-container">
-                            <img class="me__image" src="../assets/Министр.jpg"
+                            <img class="me__image" src="../assets/Министр.jpg" @click="openPopup"
                                 alt="Фотография Аны Которавевой с министром образования России" />
                         </div>
                     </div>
@@ -64,34 +74,34 @@ definePageMeta({
                         <p class="me__title">Повышение квалификации</p>
                         <div class="me__container-cards">
                             <div class="me__card-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Повышение квалификации/Артек (pdf.io).jpg"
-                                    alt="удостоверение о повышении квалификации" />
+                                    alt="Удостоверение о повышении квалификации" />
                             </div>
                             <div class="me__card-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Повышение квалификации/повышение квалификации (pdf.io).jpg"
-                                    alt="удостоверение о повышении квалификации" />
+                                    alt="Удостоверение о повышении квалификации" />
                             </div>
                             <div class="me__card-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Повышение квалификации/повышение квал.2 (pdf.io).jpg"
-                                    alt="удостоверение о повышении квалификации" />
+                                    alt="Удостоверение о повышении квалификации" />
                             </div>
                             <div class="me__card-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Повышение квалификации/повышен.3 (pdf.io).jpg"
-                                    alt="удостоверение о повышении квалификации" />
+                                    alt="Удостоверение о повышении квалификации" />
                             </div>
                             <div class="me__card-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Мои достижения/Сертификат Коротаева А.Ю. (pdf.io).jpg"
-                                    alt="сертификат" />
+                                    alt="Сертификат" />
                             </div>
                             <div class="me__card-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Достижения учеников/img-220209170752-001 (pdf.io).jpg"
-                                    alt="Благодарность" />
+                                    alt="Сертификат" />
                             </div>
                         </div>
                     </div>
@@ -99,20 +109,20 @@ definePageMeta({
                         <p class="me__title">Мои достижения</p>
                         <div class="me__container-vinner">
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Мои достижения/самые значим (pdf.io).jpg" alt="Благодарность" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Мои достижения/значимая (pdf.io).jpg" alt="Диплом" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Мои достижения/за олимпиады (pdf.io).jpg" alt="Благодарность" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Мои достижения/тоже крутая (pdf.io).jpg" alt="сертификат" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Мои достижения/тоже крутая (pdf.io).jpg" alt="Сертификат" />
                             </div>
                         </div>
                     </div>
@@ -121,72 +131,66 @@ definePageMeta({
 
                         <div class="me__container-vinner">
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170224-001 (pdf.io).jpg"
-                                    alt="Благодарность" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170224-001 (pdf.io).jpg" alt="Грамота" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170252-001 (pdf.io).jpg" alt="Диплом" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170252-001 (pdf.io).jpg" alt="Грамота" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170327-001 (pdf.io).jpg"
-                                    alt="Благодарность" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170327-001 (pdf.io).jpg" alt="Грамота" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Достижения учеников/img-220209170405-001 (pdf.io).jpg"
                                     alt="сертификат" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170428-001 (pdf.io).jpg"
-                                    alt="сертификат" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170428-001 (pdf.io).jpg" alt="Диплом" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170453-001 (pdf.io).jpg"
-                                    alt="Благодарность" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170453-001 (pdf.io).jpg" alt="Диплом" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170555-001 (pdf.io).jpg"
-                                    alt="Благодарность" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170555-001 (pdf.io).jpg" alt="Диплом" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170620-001 (pdf.io).jpg"
-                                    alt="сертификат" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170620-001 (pdf.io).jpg" alt="Диплом" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170650-001 (pdf.io).jpg"
-                                    alt="сертификат" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170650-001 (pdf.io).jpg" alt="Грамота" />
                             </div>
 
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/img-220209170850-001 (pdf.io).jpg" alt="Диплом" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/img-220209170850-001 (pdf.io).jpg"
+                                    alt="Свидетельство" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Достижения учеников/изображение 12.02.2021_1 грамота.jpg"
                                     alt="Грамота" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Достижения учеников/изображение_12.02.2022_грамота_2.jpg"
                                     alt="Грамота" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
+                                <img class="me__image" @click="openPopup"
                                     src="../assets/Достижения учеников/изображение_12.02.2022_грамота_Захаров.jpg"
                                     alt="Грамота" />
                             </div>
                             <div class="me__vinner-container">
-                                <img class="me__image" onClick={handleClick}
-                                    src="../assets/Достижения учеников/конференция (pdf.io).jpg" alt="Благодарность" />
+                                <img class="me__image" @click="openPopup"
+                                    src="../assets/Достижения учеников/конференция (pdf.io).jpg" alt="Грамота" />
                             </div>
                         </div>
                     </div>
@@ -298,7 +302,7 @@ definePageMeta({
     grid-auto-rows: 240px;
     column-gap: 10px;
     margin: 20px 20px 20px 20px;
-    justify-content: start;
+    justify-content: flex-start;
     align-content: start;
 }
 
@@ -386,4 +390,5 @@ definePageMeta({
     .me__image-container {
         margin: 15px auto 0 auto;
     }
-}</style>
+}
+</style>

@@ -1,4 +1,14 @@
 <script setup>
+const popup = usePopup();
+const image = usePopupImage();
+const name = usePopupName();
+
+const openPopup = (e) => {
+    popup.value = true;
+    image.value = e.target.src;
+    name.value = e.target.alt;
+}
+
 definePageMeta({
     layout: "header",
 })
@@ -16,7 +26,7 @@ definePageMeta({
                     Вас приветствует учитель географии Коротаева Анна Юрьевна!
                 </h2>
                 <div class="greetings__container">
-                    <div class="greetings__image-container">
+                    <div class="greetings__image-container" @click="openPopup">
                         <img class="greetings__image" src='../assets/изображение_viber_2022-02-01_21-57-12-418.jpg'
                             alt="Анна Коротаева - учитель географии." />
                     </div>

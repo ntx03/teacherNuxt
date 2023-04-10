@@ -1,9 +1,10 @@
 <script setup>
-import { artek, cozvezdie, lager, sixclass, flachmob, forum } from '../utils/photoArray';
+import { artek, cozvezdie, lager, sixclass, flachmob, forum, police, court, iset, containerCompany, fathersDay } from '../utils/photoArray';
 
 definePageMeta({
     layout: "header",
 })
+
 </script>
 <template>
     <main className="content">
@@ -14,6 +15,12 @@ definePageMeta({
             <PhotoBlock :title="'Мои шестиклашки'" :array-photo="sixclass" />
             <PhotoBlock :title="'Светящийся флэшмоб'" :array-photo="flachmob" />
             <PhotoBlock :title="'Всероссийский форум классных руководителей 9-10 октября 2021 года'" :array-photo="forum" />
+            <PhotoBlock :title="'Экскурсия в отдел полиции c. Исетское'" :array-photo="police" />
+            <PhotoBlock :title="'Экскурсия в районный суд c. Исетское'" :array-photo="court" />
+            <PhotoBlock :title="'Профориентация, 20 сентября 2021 года экскурсия ООО ЗапСибХлеб-Исеть'"
+                :array-photo="iset" />
+            <PhotoBlock :title="'Экскурсия на предприятие ПРОНТО-мягкие контейнеры'" :array-photo="containerCompany" />
+            <PhotoBlock :title="'День пап, спортивные соревнования среди 6 классов'" :array-photo="fathersDay" />
         </section>
     </main>
 </template>

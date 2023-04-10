@@ -2,7 +2,9 @@
     <div class="page">
         <NuxtLayout>
             <NuxtPage />
+
         </NuxtLayout>
+        <Popup />
     </div>
 </template>
 <style lang="scss">

@@ -1,9 +1,18 @@
 <template>
     <div className="photo__container">
-        <img className="photo__image" :src="link" :alt="name" />
+        <img className="photo__image" :src="link" :alt="name" @click="openPopup" />
     </div>
 </template>
 <script setup>
+const popup = usePopup();
+const image = usePopupImage();
+const name = usePopupName();
+
+const openPopup = (e) => {
+    popup.value = true;
+    image.value = e.target.src;
+    name.value = e.target.alt;
+}
 const props = defineProps({
     link: {
         type: String,

@@ -1,3 +1,55 @@
+<script setup>
+const route = useRoute();
+const main = ref(false);
+const about = ref(false);
+const student = ref(false);
+const parents = ref(false);
+const colleagues = ref(false);
+const video = ref(false);
+const photo = ref(false);
+const contacts = ref(false);
+const news = ref(false);
+
+if (route.fullPath == "/") {
+    main.value = true;
+}
+if (route.fullPath == "/aboutme") {
+    about.value = true;
+}
+if (route.fullPath == "/students" || route.fullPath == "/studentsplatform" || route.fullPath == "/studentsexamination") {
+    student.value = true;
+}
+if (route.fullPath == "/parents") {
+    parents.value = true;
+}
+if (route.fullPath == "/photo") {
+    photo.value = true;
+}
+if (route.fullPath == "/colleagues" || route.fullPath == "/colleagueswork") {
+    colleagues.value = true;
+}
+if (route.fullPath == "/video" || route.fullPath == "/videoschool") {
+    video.value = true;
+}
+if (route.fullPath == "/contacts") {
+    contacts.value = true;
+}
+if (route.fullPath == "/news") {
+    news.value = true;
+}
+watch(route, () => {
+    route.fullPath == "/" ? main.value = true : main.value = false;
+    route.fullPath == "/aboutme" ? about.value = true : about.value = false;
+    route.fullPath == "/students" || route.fullPath == "/studentsplatform" || route.fullPath == "/studentsexamination" ? student.value = true : student.value = false;
+    route.fullPath == "/parents" ? parents.value = true : parents.value = false;
+    route.fullPath == "/colleagues" || route.fullPath == "/colleagueswork" ? colleagues.value = true : colleagues.value = false;
+    route.fullPath == "/video" || route.fullPath == "/videoschool" ? video.value = true : video.value = false;
+    route.fullPath == "/photo" ? photo.value = true : photo.value = false;
+    route.fullPath == "/contacts" ? contacts.value = true : contacts.value = false;
+    route.fullPath == "/news" ? news.value = true : news.value = false;
+})
+</script>
+
 <template >
     <ClientOnly>
         <header class="header">
@@ -26,9 +78,9 @@
                 </ul>
                 <ul class="header__menu-container header__menu-container_row">
                     <HeaderMenuItem :way="'/video'" :text="'ВИДЕО'" :onPage="video" />
-                    <HeaderMenuItem :way="'/photo'" :text="'ФОТО'" />
-                    <HeaderMenuItem :way="'/contacts'" :text="'КОНТАКТЫ'" />
-                    <HeaderMenuItem :way="'/news'" :text="'НОВОСТИ'" />
+                    <HeaderMenuItem :way="'/photo'" :text="'ФОТО'" :onPage="photo" />
+                    <HeaderMenuItem :way="'/contacts'" :text="'КОНТАКТЫ'" :onPage="contacts" />
+                    <HeaderMenuItem :way="'/news'" :text="'НОВОСТИ'" :onPage="news" />
                 </ul>
             </div>
         </header>
@@ -38,44 +90,6 @@
         </footer>
     </ClientOnly>
 </template>
-  
-<script setup>
-const route = useRoute();
-const main = ref(false);
-const about = ref(false);
-const student = ref(false);
-const parents = ref(false);
-const colleagues = ref(false);
-const video = ref(false);
-
-if (route.fullPath == "/") {
-    main.value = true;
-}
-if (route.fullPath == "/aboutme") {
-    about.value = true;
-}
-if (route.fullPath == "/students" || route.fullPath == "/studentsplatform" || route.fullPath == "/studentsexamination") {
-    student.value = true;
-}
-if (route.fullPath == "/parents") {
-    parents.value = true;
-}
-if (route.fullPath == "/colleagues" || route.fullPath == "/colleagueswork") {
-    colleagues.value = true;
-}
-if (route.fullPath == "/video" || route.fullPath == "/videoschool") {
-    video.value = true;
-}
-watch(route, () => {
-    route.fullPath == "/" ? main.value = true : main.value = false;
-    route.fullPath == "/aboutme" ? about.value = true : about.value = false;
-    route.fullPath == "/students" || route.fullPath == "/studentsplatform" || route.fullPath == "/studentsexamination" ? student.value = true : student.value = false;
-    route.fullPath == "/parents" ? parents.value = true : parents.value = false;
-    route.fullPath == "/colleagues" || route.fullPath == "/colleagueswork" ? colleagues.value = true : colleagues.value = false;
-    route.fullPath == "/video" || route.fullPath == "/videoschool" ? video.value = true : video.value = false;
-})
-
-</script>
   
 <style lang="scss" scoped>
 .header {
