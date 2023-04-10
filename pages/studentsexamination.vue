@@ -1,9 +1,9 @@
 <template >
-    <main className="content">
+    <main class="content">
         <MenuStudents />
-        <section className="students">
-            <div className="students__container">
-                <div className="students__cards-container">
+        <section class="students">
+            <div class="students__container">
+                <div class="students__cards-container">
                     <VideoCard :link="'https://www.youtube.com/embed/l5KlXJ_16LY'"
                         :name="'Подготовка к ГИА. География 11 класс. 17.01.2020'" />
                     <VideoCard :link="'https://www.youtube.com/embed/D5f8jEhvVTg'"

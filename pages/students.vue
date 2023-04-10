@@ -68,7 +68,7 @@ definePageMeta({
 
 @media (max-width:460px) {
     .parents__menu {
-        background-color: rgba(0, 0, 0, 0.0);
+        //  background-color: rgba(0, 0, 0, 0.0);
         border: none;
 
         &-container {

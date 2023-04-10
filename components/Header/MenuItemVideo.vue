@@ -65,7 +65,7 @@ const props = defineProps({
     .header__menu-item {
         font-size: 14px;
         top: 15px;
-        left: -5px;
+        left: 5px;
         padding: 0;
         position: absolute;
         top: 10px;
@@ -77,8 +77,8 @@ const props = defineProps({
         }
 
         &_min-width {
-            width: 140px;
-            height: 50px;
+            width: 150px;
+            height: 30px;
             position: relative;
             border: 1px solid #DCDCDC;
         }
@@ -89,7 +89,8 @@ const props = defineProps({
     .header__menu-item {
         font-size: 14px;
         top: 15px;
-        left: -12px;
+        left: 0px;
+
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -98,7 +99,8 @@ const props = defineProps({
 
         &_min-width {
             margin: 0;
-            width: 120px;
+            width: 140px;
+            height: 35px;
             position: relative;
             border: 1px solid #DCDCDC;
             background-color: #DCDCDC;

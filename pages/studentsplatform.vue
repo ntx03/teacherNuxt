@@ -9,11 +9,11 @@ definePageMeta({
 </script>
 <template>
     <ClientOnly>
-        <main className="content">
+        <main class="content">
             <MenuStudents />
-            <section className="students">
-                <div className="students__container">
-                    <div className="students__cards-container">
+            <section class="students">
+                <div class="students__container">
+                    <div class="students__cards-container">
                         <StudentWebsite :name="'САЙТ РОССИЙСКАЯ ЭЛЕКТРОННАЯ ШКОЛА'" :link="'https://resh.edu.ru/'"
                             :title="'Российская электронная школа» – это интерактивные уроки по всему школьному курсу с 1 по 11 класс от лучших учителей страны, созданные для того, чтобы у каждого ребёнка была возможность получить бесплатное качественное общее образование.'"
                             :linkImage="resh"

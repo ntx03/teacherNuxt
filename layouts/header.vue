@@ -1,4 +1,5 @@
 <script setup>
+const button = useButton();
 const route = useRoute();
 const main = ref(false);
 const about = ref(false);
@@ -64,23 +65,25 @@ watch(route, () => {
                 <p class="header__slogan-autor">В.А.Сухомлинский</p>
             </div>
             <div class="header__menu-button-container">
-                <button class="header__menu-button"></button>
+                <button class="header__menu-button" @click="() => button = true"></button>
                 <p class="header__menu-button-text">МЕНЮ</p>
             </div>
-            <div class="header__menu">
+            <div class="header__menu" :class="{ 'header__menu_open': button }">
                 <ul class="header__menu-container header__menu-container_row">
 
-                    <HeaderMenuItem :way="'/'" :text="'ГЛАВНАЯ'" :onPage="main" />
-                    <HeaderMenuItem :way="'/aboutme'" :text="'О СЕБЕ'" :onPage="about" />
-                    <HeaderMenuItem :way="'/students'" :text="'УЧЕНИКАМ'" :onPage="student" />
-                    <HeaderMenuItem :way="'/parents'" :text="'РОДИТЕЛЯМ'" :onPage="parents" />
-                    <HeaderMenuItem :way="'/colleagues'" :text="'КОЛЛЕГАМ'" :onPage="colleagues" />
+                    <HeaderMenuItem :way="'/'" :text="'ГЛАВНАЯ'" :onPage="main" @click="() => button = false" />
+                    <HeaderMenuItem :way="'/aboutme'" :text="'О СЕБЕ'" :onPage="about" @click="() => button = false" />
+                    <HeaderMenuItem :way="'/students'" :text="'УЧЕНИКАМ'" :onPage="student" @click="() => button = false" />
+                    <HeaderMenuItem :way="'/parents'" :text="'РОДИТЕЛЯМ'" :onPage="parents" @click="() => button = false" />
+                    <HeaderMenuItem :way="'/colleagues'" :text="'КОЛЛЕГАМ'" :onPage="colleagues"
+                        @click="() => button = false" />
                 </ul>
                 <ul class="header__menu-container header__menu-container_row">
-                    <HeaderMenuItem :way="'/video'" :text="'ВИДЕО'" :onPage="video" />
-                    <HeaderMenuItem :way="'/photo'" :text="'ФОТО'" :onPage="photo" />
-                    <HeaderMenuItem :way="'/contacts'" :text="'КОНТАКТЫ'" :onPage="contacts" />
-                    <HeaderMenuItem :way="'/news'" :text="'НОВОСТИ'" :onPage="news" />
+                    <HeaderMenuItem :way="'/video'" :text="'ВИДЕО'" :onPage="video" @click="() => button = false" />
+                    <HeaderMenuItem :way="'/photo'" :text="'ФОТО'" :onPage="photo" @click="() => button = false" />
+                    <HeaderMenuItem :way="'/contacts'" :text="'КОНТАКТЫ'" :onPage="contacts"
+                        @click="() => button = false" />
+                    <HeaderMenuItem :way="'/news'" :text="'НОВОСТИ'" :onPage="news" @click="() => button = false" />
                 </ul>
             </div>
         </header>

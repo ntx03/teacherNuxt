@@ -1,9 +1,9 @@
 <template>
-    <div className="parents__menu">
-        <ul className="parents__menu-container">
-            <HeaderMenuItem :way="'/video'" :text="'ПРОФОРИЕНТАЦИЯ'" :onPage="video" />
-            <HeaderMenuItem :way="'/videoschool'" :text="'ШКОЛЬНАЯ ЖИЗНЬ'" :onPage="school" />
-        </ul>
+    <div class="parents__menu">
+        <div class="parents__menu-container">
+            <HeaderMenuItemVideo :way="'/video'" :text="'ПРОФОРИЕНТАЦИЯ'" :onPage="video" />
+            <HeaderMenuItemVideo :way="'/videoschool'" :text="'ШКОЛЬНАЯ ЖИЗНЬ'" :onPage="school" />
+        </div>
     </div>
 </template>
 <script setup>
@@ -23,11 +23,13 @@ watch(route, () => {
     route.fullPath == "/videoschool" ? school.value = true : school.value = false;
 })
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .parents__menu {
+    display: flex;
     max-width: max-content;
     margin: 0;
     padding: 0;
+    gap: 5px;
     display: flex;
     flex-direction: row;
     background-color: #DCDCDC;
@@ -37,17 +39,20 @@ watch(route, () => {
     border-radius: 3px;
     border: 1px solid #DCDCDC;
 
-    &-container {
-        max-width: max-content;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        text-decoration: none;
-        margin-right: auto;
-        margin-left: auto;
-        justify-content: center;
-    }
+
+}
+
+.parents__menu-container {
+    max-width: max-content;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    list-style-type: none;
+    text-decoration: none;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
 }
 </style>

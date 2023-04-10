@@ -9,7 +9,7 @@
         </ul>
     </div>
 </template>
-<script setup>
+<script scoped setup>
 const route = useRoute();
 const students = ref(false);
 const platform = ref(false);
@@ -42,7 +42,7 @@ watch(route, () => {
     }
 })
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .parents__menu {
     max-width: max-content;
     margin: 0;
@@ -61,12 +61,13 @@ watch(route, () => {
         margin: 0;
         padding: 0;
         display: flex;
-        flex-direction: row;
+        flex-wrap: wrap;
         list-style-type: none;
         text-decoration: none;
         margin-right: auto;
         margin-left: auto;
         justify-content: center;
+        //  border: 1px red solid;
     }
 }
 </style>

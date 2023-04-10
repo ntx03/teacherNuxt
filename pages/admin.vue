@@ -1,3 +1,12 @@
+<script setup>
+const auth = ref(false);
+const errorAuth = ref(false);
+
+const autorization = () => {
+  navigateTo('/');
+}
+</script>
+
 <template>
   <div class="admin">
     <div class="admin__wrapper-link">
@@ -14,26 +23,19 @@
       <p class="admin__lable">Пароль:</p>
       <input type="password" class="admin__input" placeholder="Введите пароль" />
     </div>
-    <div className="admin__text-error-box">
-      <p className="errorAuth">
+    <div class="admin__text-error-box">
+      <p class="errorAuth">
         Неправильный логин или пароль
       </p>
     </div>
-    <button className="admin__button" @click="autorization">
+    <button class="admin__button" @click="autorization">
       Войти
     </button>
   </div>
 </template>
-<script >
-const auth = ref(false);
-const errorAuth = ref(false);
 
-const autorization = () => {
-  navigateTo('/');
-}
 
-</script>
-<style  scoped>
+<style scoped lang="scss">
 .admin {
   display: flex;
   flex-direction: column;
@@ -107,10 +109,10 @@ const autorization = () => {
   color: red;
   margin: 0;
   width: max-content;
-}
 
-.admin__text-error_none {
-  display: none;
+  &_none {
+    display: none;
+  }
 }
 
 .admin__button {
@@ -130,10 +132,10 @@ const autorization = () => {
   text-align: center;
   padding: 5px 0 10px 13px;
   transition: 0.3s;
-}
 
-.admin__button:hover {
-  cursor: pointer;
-  opacity: 0.8;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }
 </style>

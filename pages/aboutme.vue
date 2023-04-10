@@ -1,5 +1,6 @@
 <script setup>
-import x from '../assets/Повышение квалификации/Артек (pdf.io).jpg';
+import { professionalDevelopment, myAchievements, studentsAchievements } from '../utils/photoAboutMe';
+import video from '../assets/Коротаева А.Ю.mp4';
 definePageMeta({
     layout: "header",
 })
@@ -44,8 +45,8 @@ const openPopup = (e) => {
                                 челенджи, проводим волонтерские
                                 мероприятия.
                             </p>
-                            <p class="me__text">
-                                В настоящее время увлекаюсь чтением педагогической литературы, вышиваю крестиком, бисером,
+                        <p class="me__text">
+                            В настоящее время увлекаюсь чтением педагогической литературы, вышиваю крестиком, бисером,
                                 люблю
                                 готовить и проводить время с
                                 семьей, веду блог в инстаграме «Навигатора детства».
@@ -55,10 +56,13 @@ const openPopup = (e) => {
                     <div class="me__container-documents">
                         <p class="me__title">Видеопрезентация "Я - учитель"</p>
                         <div class="me__card-container">
-
-                            <video controls class="me__image">
-                                <source src='../assets/Коротаева А.Ю.mp4' type="video/mp4" />
-                            </video>
+                            <iframe class="me__image" src="https://www.youtube.com/embed/U8vALd5nYbs"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                            <!-- <video controls class="me__image">
+                                        <source :src="video" type="video/mp4" />
+                                    </video> -->
 
                         </div>
                     </div>
@@ -73,125 +77,22 @@ const openPopup = (e) => {
                     <div class="me__container-documents">
                         <p class="me__title">Повышение квалификации</p>
                         <div class="me__container-cards">
-                            <div class="me__card-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Повышение квалификации/Артек (pdf.io).jpg"
-                                    alt="Удостоверение о повышении квалификации" />
-                            </div>
-                            <div class="me__card-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Повышение квалификации/повышение квалификации (pdf.io).jpg"
-                                    alt="Удостоверение о повышении квалификации" />
-                            </div>
-                            <div class="me__card-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Повышение квалификации/повышение квал.2 (pdf.io).jpg"
-                                    alt="Удостоверение о повышении квалификации" />
-                            </div>
-                            <div class="me__card-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Повышение квалификации/повышен.3 (pdf.io).jpg"
-                                    alt="Удостоверение о повышении квалификации" />
-                            </div>
-                            <div class="me__card-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Мои достижения/Сертификат Коротаева А.Ю. (pdf.io).jpg"
-                                    alt="Сертификат" />
-                            </div>
-                            <div class="me__card-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170752-001 (pdf.io).jpg"
-                                    alt="Сертификат" />
-                            </div>
+                            <PhotoContainerAboutMe :name="item.name" :link="item.link"
+                                v-for="item in professionalDevelopment" />
                         </div>
                     </div>
                     <div class="me__container-documents">
                         <p class="me__title">Мои достижения</p>
                         <div class="me__container-vinner">
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Мои достижения/самые значим (pdf.io).jpg" alt="Благодарность" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Мои достижения/значимая (pdf.io).jpg" alt="Диплом" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Мои достижения/за олимпиады (pdf.io).jpg" alt="Благодарность" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Мои достижения/тоже крутая (pdf.io).jpg" alt="Сертификат" />
-                            </div>
+                            <PhotoContainerAboutMeVinner :name="item.name" :link="item.link"
+                                v-for="item in myAchievements" />
                         </div>
                     </div>
                     <div class="me__container-documents">
                         <p class="me__title">Достижения учеников</p>
-
                         <div class="me__container-vinner">
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170224-001 (pdf.io).jpg" alt="Грамота" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170252-001 (pdf.io).jpg" alt="Грамота" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170327-001 (pdf.io).jpg" alt="Грамота" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170405-001 (pdf.io).jpg"
-                                    alt="сертификат" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170428-001 (pdf.io).jpg" alt="Диплом" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170453-001 (pdf.io).jpg" alt="Диплом" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170555-001 (pdf.io).jpg" alt="Диплом" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170620-001 (pdf.io).jpg" alt="Диплом" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170650-001 (pdf.io).jpg" alt="Грамота" />
-                            </div>
-
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/img-220209170850-001 (pdf.io).jpg"
-                                    alt="Свидетельство" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/изображение 12.02.2021_1 грамота.jpg"
-                                    alt="Грамота" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/изображение_12.02.2022_грамота_2.jpg"
-                                    alt="Грамота" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/изображение_12.02.2022_грамота_Захаров.jpg"
-                                    alt="Грамота" />
-                            </div>
-                            <div class="me__vinner-container">
-                                <img class="me__image" @click="openPopup"
-                                    src="../assets/Достижения учеников/конференция (pdf.io).jpg" alt="Грамота" />
-                            </div>
+                            <PhotoContainerAboutMeVinner :name="item.name" :link="item.link"
+                                v-for="item in studentsAchievements" />
                         </div>
                     </div>
                 </div>

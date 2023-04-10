@@ -1,10 +1,15 @@
 <template>
     <div class="page">
+
+        <Head>
+            <Title>Учитель Коротаева А.Ю.</Title>
+
+        </Head>
         <NuxtLayout>
             <NuxtPage />
-
         </NuxtLayout>
         <Popup />
+
     </div>
 </template>
 <style lang="scss">

@@ -1,10 +1,10 @@
 <template>
     <ClientOnly>
-        <div className="parents__menu">
-            <ul className="parents__menu-container">
+        <div class="parents__menu">
+            <div class="parents__menu-container">
                 <HeaderMenuItem :way="'/colleagues'" :text="'ПОМОЩЬ ПЕДАГОГУ'" :onPage="colleagues" />
                 <HeaderMenuItem :way="'/colleagueswork'" :text="'РАБОЧИЕ ПРОГРАММЫ'" :onPage="colleagueswork" />
-            </ul>
+            </div>
         </div>
     </ClientOnly>
 </template>
@@ -27,9 +27,9 @@ watch(route, () => {
 })
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .parents__menu {
-    max-width: max-content;
+    width: max-content;
     margin: 0;
     padding: 0;
     display: flex;
@@ -40,18 +40,21 @@ watch(route, () => {
     margin: 10px auto 30px auto;
     border-radius: 3px;
     border: 1px solid #DCDCDC;
+    word-wrap: break-word;
 
-    &-container {
-        max-width: max-content;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        text-decoration: none;
-        margin-right: auto;
-        margin-left: auto;
-        justify-content: center;
-    }
+}
+
+.parents__menu-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    //flex-wrap: wrap;
+    // flex-direction: row;
+    list-style-type: none;
+    text-decoration: none;
+    margin-right: auto;
+    margin-left: auto;
+    // justify-content: center;
+
 }
 </style>
