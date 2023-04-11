@@ -38,7 +38,7 @@ const props = defineProps({
 }
 
 .students__image-container {
-    width: 50%;
+    width: 95%;
     position: relative;
     padding-top: 50%;
     padding-left: 40%;

@@ -9,7 +9,8 @@
             <NuxtPage />
         </NuxtLayout>
         <Popup />
-
+        <Spinner v-show="show" />
+        <Modal v-show="showModal" />
     </div>
 </template>
 <style lang="scss">
@@ -23,3 +24,7 @@
     position: relative;
 }
 </style>
+<script setup>
+const show = useShowSpinner();
+const showModal = useShowModal();
+</script>

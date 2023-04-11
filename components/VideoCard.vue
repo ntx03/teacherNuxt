@@ -28,7 +28,7 @@ const props = defineProps({
 }
 
 .video__video-container {
-    width: 59%;
+    width: 100%;
     position: relative;
     padding-top: 60%;
     padding-left: 40%;

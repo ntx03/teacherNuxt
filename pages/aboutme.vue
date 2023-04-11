@@ -61,8 +61,8 @@ const openPopup = (e) => {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
                             <!-- <video controls class="me__image">
-                                        <source :src="video" type="video/mp4" />
-                                    </video> -->
+                                                                            <source :src="video" type="video/mp4" />
+                                                                        </video> -->
 
                         </div>
                     </div>
@@ -159,8 +159,8 @@ const openPopup = (e) => {
 }
 
 .me__image-container {
-    width: 65%;
-    height: 45%;
+    width: 90%;
+    height: 95%;
     position: relative;
     padding-top: 50%;
     padding-left: 25%;
@@ -256,7 +256,7 @@ const openPopup = (e) => {
     }
 
     .me__image-container {
-        width: 69%;
+        width: 90%;
         padding-top: 100%;
         margin: 15px auto 0 auto;
 

@@ -216,7 +216,7 @@ watch(route, () => {
 }
 
 .footer {
-    max-width: 1022px;
+    max-width: 1026px;
     margin: 0 auto 0 auto;
     background-color: #DCDCDC;
     border-bottom-left-radius: 5px;

@@ -1,11 +1,53 @@
 <script setup>
 import VK from "../assets/vk_color_white.svg";
 import instagramm from "../assets/instagram_color_white.svg";
+import emailjs from '@emailjs/browser';
+
 definePageMeta({
     layout: "header",
 })
-const name = ref('');
-const description = ref('');
+
+const disabled = ref(true);
+const show = useShowSpinner();
+const showModal = useShowModal();
+
+const toSend = ref({
+    from_name: '',
+    message: ''
+})
+watch(toSend.value, () => {
+    if (toSend.value.from_name.length < 2 || toSend.value.message.length < 4) {
+        disabled.value = true;
+    } else {
+        disabled.value = false;
+    }
+})
+// отправляем сообщение с предложением
+const onSubmit = (e) => {
+    e.preventDefault();
+    show.value = true;
+    emailjs.send(
+        'service_zj8r1gp',
+        'template_876bwdf',
+        toSend.value,
+        '9qdGrAcEbgEjFZ2GY'
+    )
+        .then((response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            toSend.value = {
+                from_name: '',
+                message: '',
+            }
+            show.value = false;
+            showModal.value = true;
+        })
+        .catch((err) => {
+            console.log('FAILED...', err);
+            alert('Произошла ошибка! Попробуйте еще раз!');
+            show.value = false;
+        });
+
+}
 </script> 
 
 <template>
@@ -18,8 +60,8 @@ const description = ref('');
                         <img class="contacts__icon" src="../assets/school_icon.png" alt="иконка школы" />
                         <p class="contacts__text-normal">
                             Муниципальное автономное общеобразовательное учреждение
-                            Исетская средняя общеобразовательная школа № 1 Исетского
-                            района Тюменской области.
+                        Исетская средняя общеобразовательная школа № 1 Исетского
+                        района Тюменской области.
                         </p>
                     </div>
                     <div class="contacts__school-container">
@@ -69,21 +111,24 @@ const description = ref('');
             <div class="contacts__form-container">
                 <h2 class="contacts__text-header">Жду ваших сообщений</h2>
                 <form class="contacts__form" name="form_for_post_message">
-                    <input type="hidden" name="project_name" value="сайт коротаева.рф" />
-                    <input type="hidden" name="admin_email" value="ntx033@yandex.ru" />
-                    <input type="hidden" name="form_subject" value="сообщение с сайта коротаева.рф" />
-                    <input type="text" required placeholder="Имя и фамилия" :value="name" minLength="2" maxLength="40"
-                        name="Имя" class="contacts__input" />
+                    <!-- <input type="hidden" name="project_name" value="сайт коротаева.рф" />
+                                                                                                                                                <input type="hidden" name="admin_email" value="ntx033@yandex.ru" />
+                                                                                                                                                <input type="hidden" name="form_subject" value="сообщение с сайта коротаева.рф" /> -->
+                    <input type="text" required placeholder="Имя и фамилия" v-model="toSend.from_name" minLength="2"
+                        maxLength="40" name="Имя" class="contacts__input" />
 
-                    <textarea type="text" required placeholder="Текст сообщения" :value="description" minLength="2"
+                    <textarea type="text" required placeholder="Текст сообщения" v-model="toSend.message" minLength="2"
                         maxLength="1000" name="message" class="contact__textarea"></textarea>
 
-                    <button id="button_form" class="contacts__button" type="submit">
+                    <button id="button_form" class="contacts__button" :class="{ 'contacts__button_disabled': disabled }"
+                        type="submit" @click="onSubmit">
                         Отправить
                     </button>
                 </form>
             </div>
+
         </section>
+
     </main>
 </template>
 
@@ -214,6 +259,7 @@ const description = ref('');
 }
 
 .contacts__input {
+    padding: 5px;
     width: 320px;
     height: 30px;
     margin: 35px auto 20px auto;
@@ -228,6 +274,7 @@ const description = ref('');
 }
 
 .contact__textarea {
+    padding: 5px;
     width: 320px;
     height: 90px;
     margin: 0 auto 20px auto;
@@ -245,7 +292,20 @@ const description = ref('');
     margin: 0 auto 35px auto;
     width: 100px;
     background-color: #DCDCDC;
+    border-radius: 5px;
+    height: 30px;
     border: 1px solid gray;
+    transition: 0.5s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &_disabled {
+        background-color: whitesmoke;
+        opacity: 0.5;
+        cursor: auto;
+    }
 }
 
 .contacts__text-header {

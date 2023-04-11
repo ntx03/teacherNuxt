@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   css: ["@/assets/css/normalize.css", "@/assets/font/Inter/inter.css"],
   vite: {
@@ -10,4 +11,5 @@ export default defineNuxtConfig({
       },
     },
   },
+  modules: ["@nuxtjs/tailwindcss"],
 });

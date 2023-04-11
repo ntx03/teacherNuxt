@@ -9,9 +9,11 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.6.5",
     "nuxt": "^3.3.3"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "sass": "^1.60.0"
   }
 }

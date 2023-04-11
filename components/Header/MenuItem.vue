@@ -21,7 +21,7 @@ const props = defineProps({
         type: Boolean
     },
     onClick: {
-        type: Boolean
+
     }
 
 });
@@ -49,7 +49,7 @@ const props = defineProps({
     }
 
     &_min-width {
-        min-width: 75px;
+        min-width: 85px;
         padding: 5px 5px 5px 5px;
         text-align: center;
 

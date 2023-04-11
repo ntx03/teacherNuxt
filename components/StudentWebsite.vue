@@ -9,7 +9,7 @@
     </ClientOnly>
 </template>
 <script setup>
-console.log(props.linkImage);
+
 const props = defineProps({
     name: {
         type: String,
@@ -37,6 +37,7 @@ const props = defineProps({
 }
 
 .students__header {
+    width: 90%;
     margin: 0;
     font-family: inter, "Helvetica Neue", "Arial", sans-serif;
     font-size: 18px;
@@ -49,7 +50,7 @@ const props = defineProps({
 }
 
 .students__image-container {
-    width: 50%;
+    width: 90%;
     position: relative;
     padding-top: 50%;
     padding-left: 40%;

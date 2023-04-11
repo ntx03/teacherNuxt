@@ -171,11 +171,12 @@ definePageMeta({
     transition-duration: 0.5s;
     text-align: center;
     padding: 7.5px 7.5px 7.5px 7.5px;
+    background-color: whitesmoke;
 }
 
 @media (max-width:767px) {
     .greetings__image-container {
-        width: 80%;
+        width: 95%;
         padding-top: 100%;
         margin: 0 auto 0 auto;
 
