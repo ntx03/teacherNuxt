@@ -32,12 +32,12 @@ watch(route, () => {
     gap: 5px;
     display: flex;
     flex-direction: row;
-    background-color: #DCDCDC;
+    background-color: $grey;
     align-items: center;
     justify-items: center;
     margin: 10px auto 30px auto;
     border-radius: 3px;
-    border: 1px solid #DCDCDC;
+    border: 1px solid $grey;
 
 
 }

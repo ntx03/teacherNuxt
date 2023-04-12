@@ -65,15 +65,14 @@ const props = defineProps({
     font-style: normal;
     font-weight: bold;
     text-align: center;
-    background-color: whitesmoke;
+    background-color: $ligthGrey;
     max-width: 100px;
     margin: 0 auto 0 auto;
     padding: 7.5px 7.5px 6.0px 7.5px;
     border-radius: 5px;
 
-    /*border: black 1px solid;*/
     &:hover {
-        background-color: rgba(75, 192, 8, 0.616);
+        background-color: $buttonGrey;
         transition: 0.5s;
     }
 }

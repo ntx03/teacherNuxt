@@ -41,7 +41,7 @@ const props = defineProps({
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 14px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: normal;
     font-weight: normal;
     text-align: start;
@@ -54,7 +54,7 @@ const props = defineProps({
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: italic;
     font-weight: bold;
     text-align: center;
@@ -67,7 +67,7 @@ const props = defineProps({
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 16px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: normal;
     font-weight: normal;
     text-align: justify;

@@ -49,12 +49,12 @@ watch(route, () => {
     padding: 0;
     display: flex;
     flex-direction: row;
-    background-color: #DCDCDC;
+    background-color: $grey;
     align-items: center;
     justify-items: center;
     margin: 10px auto 30px auto;
     border-radius: 3px;
-    border: 1px solid #DCDCDC;
+    border: 1px solid $grey;
 
     &-container {
         max-width: max-content;
@@ -67,7 +67,6 @@ watch(route, () => {
         margin-right: auto;
         margin-left: auto;
         justify-content: center;
-        //  border: 1px red solid;
     }
 }
 </style>

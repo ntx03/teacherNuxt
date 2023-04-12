@@ -1,6 +1,5 @@
 <script setup>
 import { professionalDevelopment, myAchievements, studentsAchievements } from '../utils/photoAboutMe';
-import video from '../assets/Коротаева А.Ю.mp4';
 definePageMeta({
     layout: "header",
 })
@@ -45,9 +44,9 @@ const openPopup = (e) => {
                                 челенджи, проводим волонтерские
                                 мероприятия.
                             </p>
-                        <p class="me__text">
+                            <p class="me__text">
                             В настоящее время увлекаюсь чтением педагогической литературы, вышиваю крестиком, бисером,
-                                люблю
+                            люблю
                                 готовить и проводить время с
                                 семьей, веду блог в инстаграме «Навигатора детства».
                             </p>
@@ -61,8 +60,8 @@ const openPopup = (e) => {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
                             <!-- <video controls class="me__image">
-                                                                            <source :src="video" type="video/mp4" />
-                                                                        </video> -->
+                                                                                    <source :src="video" type="video/mp4" />
+                                                                                </video> -->
 
                         </div>
                     </div>
@@ -146,7 +145,7 @@ const openPopup = (e) => {
     margin: 40px auto 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 

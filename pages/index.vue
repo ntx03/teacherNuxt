@@ -90,7 +90,7 @@ definePageMeta({
     margin: 40px auto 0 auto;
     display: flex;
     flex-direction: row;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -171,7 +171,7 @@ definePageMeta({
     transition-duration: 0.5s;
     text-align: center;
     padding: 7.5px 7.5px 7.5px 7.5px;
-    background-color: whitesmoke;
+    background-color: $ligthGrey;
 }
 
 @media (max-width:767px) {

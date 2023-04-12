@@ -45,7 +45,7 @@ const autorization = () => {
 
 .admin__wrapper-link {
   margin: 30px auto 0 50px;
-  background-color: #dcdcdc;
+  background-color: $grey;
   width: 120px;
   height: 30px;
   border-radius: 5px;
@@ -93,6 +93,10 @@ const autorization = () => {
 .admin__input {
   width: 95%;
   outline: none;
+  border: 1px black solid;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .admin__text-error-box {
@@ -123,7 +127,7 @@ const autorization = () => {
   width: 80px;
   height: 30px;
   border-radius: 5px;
-  background-color: #dcdcdc;
+  background-color: $grey;
   font-family: inter;
   font-size: 16px;
   font-weight: 500;

@@ -39,7 +39,7 @@ definePageMeta({
     margin: 40px auto 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #dcdcdc;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -68,7 +68,6 @@ definePageMeta({
 
 @media (max-width:460px) {
     .parents__menu {
-        //  background-color: rgba(0, 0, 0, 0.0);
         border: none;
 
         &-container {

@@ -18,7 +18,7 @@ const name = usePopupName();
 
 <style scoped lang="scss">
 .popup {
-    background: rgba(0, 0, 0, 0.5);
+    background: $overlayBlack;
     display: flex;
     opacity: 0;
     visibility: hidden;
@@ -36,7 +36,7 @@ const name = usePopupName();
         visibility: visible;
         opacity: 1;
         transition: visibility 0.2s, opacity 0.2s linear;
-        background: rgba(0, 0, 0, 0.5);
+        background: $overlayBlack;
         justify-content: center;
         align-items: center;
         position: fixed;
@@ -104,7 +104,7 @@ const name = usePopupName();
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: $overlayBlack;
     cursor: pointer;
     z-index: 1;
 }

@@ -98,7 +98,6 @@ watch(route, () => {
 .header {
     max-width: 1280px;
     margin: 0 auto 0 auto;
-
 }
 
 .header__title {
@@ -106,7 +105,7 @@ watch(route, () => {
     font-family: 'Philosopher', sans-serif;
     font-size: 22px;
     line-height: 1.05;
-    color: black;
+    color: $black;
     font-style: italic;
     font-weight: 700;
     margin: 15px auto 0 20px;
@@ -123,7 +122,6 @@ watch(route, () => {
 }
 
 .header__title-container {
-    /*background-color: #c0c0c0;*/
     background-image: url("../assets/1530173750_shapka-sayta-turizm-16353731.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -137,12 +135,11 @@ watch(route, () => {
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: italic;
     font-weight: bold;
     margin: 10px 10px 0 auto;
     text-align: end;
-
 }
 
 .header__slogan-autor {
@@ -150,19 +147,17 @@ watch(route, () => {
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 16px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: italic;
     font-weight: bold;
     text-align: end;
     margin: 20px 20px 20px auto;
     position: relative;
-
 }
 
 .header__slogan-container {
     max-width: 1000px;
     margin: 20px auto 0 auto;
-    /*border: tomato 1px solid;*/
 }
 
 .header__menu-button {
@@ -170,7 +165,7 @@ watch(route, () => {
     width: 50px;
     height: 50px;
     border: none;
-    background-color: whitesmoke;
+    background-color: $ligthGrey;
     background-repeat: no-repeat;
 }
 
@@ -181,13 +176,12 @@ watch(route, () => {
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 20px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: normal;
     font-weight: bold;
     background-image: url(../assets/white-waves.png);
     padding-top: 15px;
     padding-left: 20px;
-
 }
 
 .header__menu {
@@ -196,12 +190,12 @@ watch(route, () => {
     padding: 0;
     display: flex;
     flex-direction: row;
-    background-color: #DCDCDC;
+    background-color: $grey;
     align-items: center;
     justify-items: center;
     margin: 10px auto 30px auto;
     border-radius: 3px;
-    border: 1px solid #DCDCDC;
+    border: 1px solid $grey;
 }
 
 .header__menu-container {
@@ -212,17 +206,16 @@ watch(route, () => {
     flex-direction: row;
     list-style-type: none;
     text-decoration: none;
-
 }
 
 .footer {
     max-width: 1026px;
     margin: 0 auto 0 auto;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     z-index: 1;
-    border: #DCDCDC 1px solid;
+    border: $grey 1px solid;
 
     &__copyright {
         margin: 0;
@@ -231,7 +224,7 @@ watch(route, () => {
         font-size: 12px;
         line-height: 1.3;
         color: black;
-        background-color: #DCDCDC;
+        background-color: $grey;
         font-style: normal;
         font-weight: normal;
         margin: 30px auto 20px 20px;
@@ -294,7 +287,6 @@ watch(route, () => {
             display: block;
             top: 250px;
             box-shadow: 0 0 0 99999px rgba(0, 0, 0, .8);
-            /* fallback for IE */
             box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .8);
         }
     }
@@ -302,7 +294,6 @@ watch(route, () => {
     .header__slogan-autor {
         font-size: 14px;
     }
-
 
     .header__menu-container {
         justify-content: center;
@@ -316,7 +307,6 @@ watch(route, () => {
         }
     }
 }
-
 
 @media (max-width:430px) {
     .header__title {

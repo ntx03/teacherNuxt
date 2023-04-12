@@ -32,7 +32,7 @@ const props = defineProps({
 <style  scoped lang="scss">
 .news__block {
     border-radius: 15px;
-    background-color: whitesmoke;
+    background-color: $ligthGrey;
     margin: 40px 20px 0 20px;
 }
 

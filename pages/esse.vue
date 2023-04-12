@@ -154,7 +154,6 @@ definePageMeta({
         font-weight: bold;
         text-align: center;
         margin: 20px auto 0 auto;
-        /*border: tomato 1px solid;*/
     }
 }
 
@@ -163,7 +162,7 @@ definePageMeta({
     margin: 40px auto 0 auto;
     display: flex;
     flex-direction: row;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 

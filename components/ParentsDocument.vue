@@ -26,7 +26,7 @@ const props = defineProps({
     flex-direction: row;
     margin: 10px auto 10px auto;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: $ligthGrey;
     padding-right: 5px;
     border-radius: 5px;
     width: 100%;
@@ -56,11 +56,11 @@ const props = defineProps({
         font-weight: bold;
         text-align: center;
         padding: 7.5px;
-        background-color: #DCDCDC;
+        background-color: $grey;
         border-radius: 5px;
 
         &:hover {
-            background-color: rgba(75, 192, 8, 0.616);
+            background-color: $buttonGreen;
             transition: 0.5s;
             border-radius: 5px;
         }

@@ -39,7 +39,7 @@ definePageMeta({
     margin: 40px auto 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -51,7 +51,7 @@ definePageMeta({
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: normal;
     font-weight: bold;
     text-align: center;
@@ -73,7 +73,7 @@ definePageMeta({
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: normal;
     font-weight: bold;
     text-align: center;

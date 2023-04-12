@@ -45,7 +45,7 @@ const props = defineProps({
     padding: 7.5px 7.5px 7.5px 7.5px;
 
     &_click {
-        background-color: whitesmoke;
+        background-color: $ligthGrey;
     }
 
     &_min-width {
@@ -54,7 +54,7 @@ const props = defineProps({
         text-align: center;
 
         &:hover {
-            background-color: whitesmoke;
+            background-color: $ligthGrey;
             cursor: pointer;
             transition: 0.5s;
         }
@@ -73,14 +73,14 @@ const props = defineProps({
         height: 20px;
 
         &_click {
-            background-color: whitesmoke;
+            background-color: $ligthGrey;
         }
 
         &_min-width {
             width: 150px;
             height: 30px;
             position: relative;
-            border: 1px solid #DCDCDC;
+            border: 1px solid $grey;
         }
     }
 }
@@ -102,12 +102,12 @@ const props = defineProps({
             width: 140px;
             height: 35px;
             position: relative;
-            border: 1px solid #DCDCDC;
-            background-color: #DCDCDC;
+            border: 1px solid $grey;
+            background-color: $grey;
         }
 
         &_click {
-            background-color: whitesmoke;
+            background-color: $ligthGrey;
         }
     }
 }

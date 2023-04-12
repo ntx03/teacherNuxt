@@ -3,6 +3,7 @@
         <img className="photo__image" :src="link" :alt="name" @click="openPopup" />
     </div>
 </template>
+
 <script setup>
 const popup = usePopup();
 const image = usePopupImage();
@@ -24,6 +25,7 @@ const props = defineProps({
     }
 })
 </script>
+
 <style scoped lang="scss">
 .photo__container {
     width: 100%;

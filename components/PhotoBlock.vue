@@ -23,7 +23,7 @@ const props = defineProps({
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: normal;
     font-weight: bold;
     text-align: center;

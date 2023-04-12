@@ -33,7 +33,7 @@ definePageMeta({
     display: flex;
     flex-direction: column;
     max-width: 1026px;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     margin: 40px auto 0 auto;

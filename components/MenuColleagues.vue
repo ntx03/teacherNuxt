@@ -34,27 +34,22 @@ watch(route, () => {
     padding: 0;
     display: flex;
     flex-direction: row;
-    background-color: #DCDCDC;
+    background-color: $grey;
     align-items: center;
     justify-items: center;
     margin: 10px auto 30px auto;
     border-radius: 3px;
-    border: 1px solid #DCDCDC;
+    border: 1px solid $grey;
     word-wrap: break-word;
-
 }
 
 .parents__menu-container {
     margin: 0;
     padding: 0;
     display: flex;
-    //flex-wrap: wrap;
-    // flex-direction: row;
     list-style-type: none;
     text-decoration: none;
     margin-right: auto;
     margin-left: auto;
-    // justify-content: center;
-
 }
 </style>

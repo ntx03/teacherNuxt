@@ -114,8 +114,8 @@ const onSubmit = (e) => {
                 <h2 class="contacts__text-header">Жду ваших сообщений</h2>
                 <form class="contacts__form" name="form_for_post_message">
                     <!-- <input type="hidden" name="project_name" value="сайт коротаева.рф" />
-                                                                                                                                                                            <input type="hidden" name="admin_email" value="ntx033@yandex.ru" />
-                                                                                                                                                                            <input type="hidden" name="form_subject" value="сообщение с сайта коротаева.рф" /> -->
+                                                                                                                                                                                    <input type="hidden" name="admin_email" value="ntx033@yandex.ru" />
+                                                                                                                                                                                    <input type="hidden" name="form_subject" value="сообщение с сайта коротаева.рф" /> -->
                     <input type="text" required placeholder="Имя и фамилия" v-model="toSend.from_name" minLength="2"
                         maxLength="40" name="Имя" class="contacts__input" />
 
@@ -159,7 +159,7 @@ const onSubmit = (e) => {
     margin: 40px auto 0 auto;
     display: flex;
     flex-direction: row;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -248,7 +248,7 @@ const onSubmit = (e) => {
     margin: 0 auto 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #DCDCDC;
+    background-color: $grey;
 }
 
 .contacts__form {
@@ -257,7 +257,7 @@ const onSubmit = (e) => {
     width: 400px;
     margin: 20px auto 20px auto;
     border-radius: 5px;
-    background-color: whitesmoke;
+    background-color: $ligthGrey;
 }
 
 .contacts__input {
@@ -266,7 +266,7 @@ const onSubmit = (e) => {
     height: 30px;
     margin: 35px auto 20px auto;
     border-radius: 5px;
-    border: 1px solid gray;
+    border: 1px solid $normalGrey;
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 12px;
     line-height: 1.15;
@@ -281,7 +281,7 @@ const onSubmit = (e) => {
     height: 90px;
     margin: 0 auto 20px auto;
     border-radius: 5px;
-    border: 1px solid gray;
+    border: 1px solid $normalGrey;
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 12px;
     line-height: 1.15;
@@ -293,10 +293,10 @@ const onSubmit = (e) => {
 .contacts__button {
     margin: 0 auto 35px auto;
     width: 100px;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-radius: 5px;
     height: 30px;
-    border: 1px solid gray;
+    border: 1px solid $normalGrey;
     transition: 0.5s;
 
     &:hover {
@@ -304,7 +304,7 @@ const onSubmit = (e) => {
     }
 
     &_disabled {
-        background-color: whitesmoke;
+        background-color: $ligthGrey;
         opacity: 0.5;
         cursor: auto;
     }

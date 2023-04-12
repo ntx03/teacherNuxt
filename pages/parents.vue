@@ -54,7 +54,7 @@ definePageMeta({
     margin: 20px auto 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #DCDCDC;
+    background-color: $grey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -65,12 +65,11 @@ definePageMeta({
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 20px;
     line-height: 1.15;
-    color: black;
+    color: $black;
     font-style: italic;
     font-weight: bold;
     text-align: center;
     margin: 20px auto 0 auto;
-    /*border: tomato 1px solid;*/
 }
 
 .parents__list {
