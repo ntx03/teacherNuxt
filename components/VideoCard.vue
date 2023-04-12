@@ -1,12 +1,3 @@
-<template>
-    <div class="video__card">
-        <div class="video__video-container">
-            <iframe class="video__box" :src="props.link" title="YouTube video player" webkitAllowFullScreen
-                mozallowfullscreen allowFullScreen></iframe>
-        </div>
-        <p class="video__text">{{ props.name }}</p>
-    </div>
-</template>
 <script setup>
 const props = defineProps({
     name: {
@@ -19,6 +10,17 @@ const props = defineProps({
     }
 })
 </script>
+
+<template>
+    <div class="video__card">
+        <div class="video__video-container">
+            <iframe class="video__box" :src="props.link" frameBorder="0" webkitAllowFullScreen mozallowfullscreen
+                allowFullScreen></iframe>
+        </div>
+        <p class="video__text">{{ props.name }}</p>
+    </div>
+</template>
+
 <style scoped lang="scss">
 .video__card {
     display: flex;

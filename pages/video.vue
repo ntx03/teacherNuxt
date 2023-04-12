@@ -1,3 +1,9 @@
+<script setup>
+const video = 'https://rutube.ru/play/embed/ed0f54b70b230b7d4305a56ea1c413b8';
+definePageMeta({
+    layout: "header",
+})
+</script>
 <template>
     <main className="content">
         <MenuVideo />
@@ -5,11 +11,11 @@
             <div className="video__container">
                 <p className="video__text-heaher">Выбирай свою будущую профессию уже сейчас!</p>
                 <div className="video__block">
-                    <VideoCard :link="'https://rutube.ru/play/embed/aa71b83dbd9b557e26b0339cb234db49'"
+                    <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239053&hash=33d670d9fc0404bb&hd=2'"
                         :name="'КНАУФ, основанная в 1932 году, является семейной компанией попроизводству строительных материалов и систем, в которой трудится множество сотрудников различных национальностей.'" />
-                    <VideoCard :link="'https://rutube.ru/play/embed/bfcc7954fa0379b49ee322931ec65a77'"
+                    <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239048&hash=b116691bbe5a2a5b&hd=2'"
                         :name="'СИБУР Тобольск (ранее — Тобольский нефтехимический комбинат,Тобольск-Нефтехим) — российское (ранее советское) нефтехимическое предприятие, расположенное в городе Тобольске Тюменской области. Предназначено для глубокой переработки широкой фракции лёгких углеводородов.'" />
-                    <VideoCard :link="'https://rutube.ru/play/embed/ed0f54b70b230b7d4305a56ea1c413b8'"
+                    <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239049&hash=3fe157dd7876c1b4&hd=2'"
                         :name="'Тобольск-Полимер» — реализованный компанией СИБУР в рамках государственной программы, проект крупнейшего в России промышленного комплекса по переработке компонентов попутного нефтяного газа (ПНГ) с получением востребованных марок полимеров. Входит в тройку крупнейших подобных производств в мире[1]. Расположен в городе Тобольске Тюменской области.'" />
                     <VideoCard :link="'https://www.youtube.com/embed/UKgUznabBGU'"
                         :name="'АО Аминосиб сегодня – это инвестиционный проект федерального значения, а вскоре - крупнейший производитель аминокислот в России, современное высокотехнологичное предприятие по глубокой переработке пшеницы, производительность которого при выходе на полную мощность составит более 120 тыс. тонн зерна в год.'" />
@@ -24,11 +30,7 @@
         </section>
     </main>
 </template>
-<script setup>
-definePageMeta({
-    layout: "header",
-})
-</script>
+
 <style scoped lang="scss">
 .video {}
 

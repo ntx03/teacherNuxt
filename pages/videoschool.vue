@@ -5,11 +5,14 @@
             <div className="video__container">
                 <p className="video__text-heaher">Когда мы вместе - это сила!</p>
                 <div className="video__block">
-                    <VideoCard :link="'https://rutube.ru/play/embed/c4074c4bb47d0c6206689241edfe0b59'"
+
+                    <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239050&hash=ce84ede5e0ca09bf&hd=2'"
                         :name="'Флэшмоб ко Дню студента, учащиеся МАОУ исетской СОШ 1 поздравляют с Днём студента.'" />
-                    <VideoCard :link="'https://rutube.ru/play/embed/c33b525d6c342f093579ddcca6674e22'"
+
+                    <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239052&hash=72f0e5bd3f01fcc2&hd=2'"
                         :name="'Флэшмоб - акция к Дню флага от РДШ, Отряд 3, летний оздоровительный лагерь.'" />
-                    <VideoCard :link="'https://rutube.ru/play/embed/17c75c85f980f94c7d7c5bb208d93185'"
+
+                    <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239051&hash=ab093d9a017f60b4&hd=2'"
                         :name="'К Дню русского языка, который будет 21 февраля 6 а класс подготовил приветствия на разных языках мира.'" />
 
                 </div>
