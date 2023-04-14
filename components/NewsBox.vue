@@ -1,4 +1,5 @@
 <script setup>
+
 const props = defineProps({
     date: {
         type: String,
@@ -17,12 +18,19 @@ const props = defineProps({
         required: true
     },
 })
+const numberColumnPhoto = () => {
+    if (props.photoArray.length < 5) {
+        return `grid-template-columns: repeat(${props.photoArray.length}, 1fr)`;
+    } else {
+        return `grid-template-columns: repeat(${3}, 1fr)`;
+    }
+}
 </script>
 
 <template>
     <div class="news__block">
         <News :date="props.date" :text="props.text" :header="props.header" />
-        <div class="photo__block">
+        <div class="photo__block" :style="numberColumnPhoto()">
             <PhotoContainer :link="item.link" :name="item.name" v-for="item in props.photoArray" />
         </div>
 
@@ -38,7 +46,7 @@ const props = defineProps({
 
 .photo__block {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 1fr;
     gap: 10px;
     margin: 20px 20px 20px 20px;

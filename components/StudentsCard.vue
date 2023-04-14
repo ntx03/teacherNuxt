@@ -72,7 +72,7 @@ const props = defineProps({
     border-radius: 5px;
 
     &:hover {
-        background-color: $buttonGrey;
+        background-color: $buttonGreen;
         transition: 0.5s;
     }
 }

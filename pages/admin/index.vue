@@ -1,10 +1,34 @@
 <script setup>
 const auth = ref(false);
 const errorAuth = ref(false);
+const name = ref('');
+const password = ref('');
 
-const autorization = () => {
-  navigateTo('/');
+const autorization = (name, password) => {
+  // navigateTo('/admin/main');
+  fetch('http://localhost:3000/signin', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({
+      name: name,
+      password: password
+    }),
+  })
+    .then((res) => {
+      console.log(res);
+      return res.json()
+    })
+    .then((res) => {
+      console.log(res);
+      localStorage.setItem('token', res.token);
+      navigateTo('/admin/news');
+    })
+    .catch((e) => console.log(e));
+
 }
+
 </script>
 
 <template>
@@ -17,18 +41,18 @@ const autorization = () => {
     <p class="admin__title">Авторизация пользователя</p>
     <div class="admin__container">
       <p class="admin__lable">Логин:</p>
-      <input type="text" class="admin__input" placeholder="Введите логин" />
+      <input type="text" class="admin__input" v-model="name" placeholder="Введите логин" />
     </div>
     <div class="admin__container">
       <p class="admin__lable">Пароль:</p>
-      <input type="password" class="admin__input" placeholder="Введите пароль" />
+      <input type="password" class="admin__input" v-model="password" placeholder="Введите пароль" />
     </div>
     <div class="admin__text-error-box">
       <p class="errorAuth">
         Неправильный логин или пароль
       </p>
     </div>
-    <button class="admin__button" @click="autorization">
+    <button class="admin__button" @click="autorization(name, password)">
       Войти
     </button>
   </div>
