@@ -13,11 +13,15 @@ const props = defineProps({
         required: true
     }
 })
+
+const getDate = () => {
+    return props.date.split('-').reverse().join('.');
+}
 </script>
 <template>
     <ul class="news__name">
         <li>
-            <p class="news__data">{{ date }}</p>
+            <p class="news__data">{{ getDate(date) }} г.</p>
         </li>
         <li>
             <h2 class="news__header">{{ header }}</h2>

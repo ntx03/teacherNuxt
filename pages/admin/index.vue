@@ -1,61 +1,60 @@
 <script setup>
-const auth = ref(false);
-const errorAuth = ref(false);
+import { autorization } from '~/utils/api';
+
 const name = ref('');
 const password = ref('');
 
-const autorization = (name, password) => {
-  // navigateTo('/admin/main');
-  fetch('http://localhost:3000/signin', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify({
-      name: name,
-      password: password
-    }),
-  })
+if (!process.server) {
+  if (localStorage.getItem('token')) {
+    navigateTo('admin/news');
+  }
+}
+/**
+ * Авторизация порльзователя
+ * @param {name} имя 
+ * @param {password} пароль
+ */
+const goAutorization = (name, password) => {
+  autorization(name, password)
     .then((res) => {
-      console.log(res);
-      return res.json()
-    })
-    .then((res) => {
-      console.log(res);
       localStorage.setItem('token', res.token);
       navigateTo('/admin/news');
     })
     .catch((e) => console.log(e));
-
 }
 
 </script>
 
 <template>
-  <div class="admin">
-    <div class="admin__wrapper-link">
-      <NuxtLink class="admin__link" to="/">
-        На главную
-      </NuxtLink>
+  <ClientOnly>
+    <div class="admin">
+      <p class="admin__title">Авторизация пользователя</p>
+      <div class="wrapper">
+        <div class="admin__wrapper-link">
+          <NuxtLink class="admin__link" to="/">
+            На главную
+          </NuxtLink>
+        </div>
+
+        <div class="admin__container">
+          <p class="admin__lable">Логин:</p>
+          <input type="text" class="admin__input" v-model="name" placeholder="Введите логин" />
+        </div>
+        <div class="admin__container">
+          <p class="admin__lable">Пароль:</p>
+          <input type="password" class="admin__input" v-model="password" placeholder="Введите пароль" />
+        </div>
+        <div class="admin__text-error-box">
+          <!-- <p class="errorAuth">
+                       Неправильный логин или пароль
+                          </p> -->
+        </div>
+        <button class="admin__button" @click="goAutorization(name, password)">
+          Войти
+        </button>
+      </div>
     </div>
-    <p class="admin__title">Авторизация пользователя</p>
-    <div class="admin__container">
-      <p class="admin__lable">Логин:</p>
-      <input type="text" class="admin__input" v-model="name" placeholder="Введите логин" />
-    </div>
-    <div class="admin__container">
-      <p class="admin__lable">Пароль:</p>
-      <input type="password" class="admin__input" v-model="password" placeholder="Введите пароль" />
-    </div>
-    <div class="admin__text-error-box">
-      <p class="errorAuth">
-        Неправильный логин или пароль
-      </p>
-    </div>
-    <button class="admin__button" @click="autorization(name, password)">
-      Войти
-    </button>
-  </div>
+  </ClientOnly>
 </template>
 
 
@@ -63,13 +62,22 @@ const autorization = (name, password) => {
 .admin {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 120vh;
+  width: 800px;
+  height: max-content;
+  padding-top: 20px;
+  margin: 0 auto 0 auto;
+
+}
+
+.wrapper {
+  margin-top: 100px;
+  background-color: $grey;
+  border-radius: 10px;
 }
 
 .admin__wrapper-link {
   margin: 30px auto 0 50px;
-  background-color: $grey;
+  background-color: $ligthGrey;
   width: 120px;
   height: 30px;
   border-radius: 5px;
@@ -95,9 +103,9 @@ const autorization = (name, password) => {
   margin: 50px auto 0 auto;
   width: max-content;
   font-family: inter;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 500;
-  line-height: 30px;
+  line-height: 36px;
 }
 
 .admin__container {
@@ -145,13 +153,13 @@ const autorization = (name, password) => {
 
 .admin__button {
   display: flex;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 20px auto;
   width: max-content;
   border: none;
   width: 80px;
   height: 30px;
   border-radius: 5px;
-  background-color: $grey;
+  background-color: $ligthGrey;
   font-family: inter;
   font-size: 16px;
   font-weight: 500;

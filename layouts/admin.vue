@@ -1,18 +1,20 @@
 <template>
     <section class="admin">
         <div class="exit__box">
-            <NuxtLink to='/' class="exit">На сайт</NuxtLink>
-            <NuxtLink to="/admin" class="exit">Вход в админ панель</NuxtLink>
+            <NuxtLink to='/' class="exit">На главную сайта</NuxtLink>
+            <button class="exit" @click="logout">Выход из админ панели</button>
         </div>
         <h1 class="title">Административная панель</h1>
         <MenuAdmin />
         <slot />
 
-
     </section>
 </template>
 <script setup>
-
+const logout = () => {
+    localStorage.removeItem('token');
+    navigateTo('/admin');
+}
 </script>
 <style scoped lang="scss">
 .exit {

@@ -10,7 +10,21 @@ export const checkErrorJSON = (res: any) => {
   return Promise.reject(`Ошибка: ${res.status}`);
 };
 
-const baseUrl: string = 'http://localhost:3000/';
+const baseUrl: string = 'http://localhost:4000/';
+
+export const autorization = async (name: String, password: String) => {
+  const res = await fetch(baseUrl + 'signin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify({
+      name: name,
+      password: password,
+    }),
+  });
+  return checkErrorJSON(res);
+};
 
 /**
  * Получаем все новости
@@ -22,17 +36,25 @@ export const newsList = async () => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
-      authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   });
   return checkErrorJSON(res);
 };
 
+type photo = Array<Object>;
+
+interface createNews {
+  name: String;
+  date: String;
+  description: String;
+  photo: photo;
+}
+
 /**
  * Создаем новость
  * @returns массив с новостями
  */
-export const createNews = async (obj: Object) => {
+export const createNews = async (obj: createNews) => {
   const token = localStorage.getItem('token');
   const res = await fetch(baseUrl + `news`, {
     method: 'POST',
@@ -53,14 +75,17 @@ export const createNews = async (obj: Object) => {
 /**
  * удаление новости
  */
-export const changeInvNumber = async (id: string) => {
+export const deleteNews = async (id: string) => {
   const token = localStorage.getItem('token');
-  const res = await fetch(baseUrl + `news?_id=${id}`, {
+  const res = await fetch(baseUrl + `news`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
-      'x-auth-token': `${token}`,
+      authorization: `Bearer ${localStorage.getItem('token')}`,
     },
+    body: JSON.stringify({
+      _id: id,
+    }),
   });
 
   return checkErrorJSON(res);

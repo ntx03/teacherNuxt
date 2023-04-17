@@ -209,7 +209,7 @@ watch(route, () => {
 }
 
 .footer {
-    max-width: 1026px;
+    max-width: 1024px;
     margin: 0 auto 0 auto;
     background-color: $grey;
     border-bottom-left-radius: 5px;
