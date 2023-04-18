@@ -1,7 +1,20 @@
 <script setup>
+import { useMain } from "../composables/main/useMain";
+import { mainData } from '../utils/main/apiMain';
+
 const popup = usePopup();
 const image = usePopupImage();
 const name = usePopupName();
+const main = useMain();
+
+mainData()
+    .then((res) => {
+        console.log(res);
+        main.value = res;
+    })
+    .catch((e) => {
+        console.log(e);
+    })
 
 const openPopup = (e) => {
     popup.value = true;
@@ -12,45 +25,21 @@ const openPopup = (e) => {
 definePageMeta({
     layout: "header",
 })
-
 </script>
-
 <template>
     <ClientOnly>
         <main class="content">
             <section class="greetings">
-                <h2 class="greetings__title">
-                    Здравствуйте, уважаемые коллеги, гости!
-                </h2>
-                <h2 class="greetings__title">
-                    Вас приветствует учитель географии Коротаева Анна Юрьевна!
+                <h2 class="greetings__title" v-for="sentence in main[0].title">
+                    {{ sentence }}
                 </h2>
                 <div class="greetings__container">
                     <div class="greetings__image-container" @click="openPopup">
-                        <img class="greetings__image" src='../assets/изображение_viber_2022-02-01_21-57-12-418.jpg'
-                            alt="Анна Коротаева - учитель географии." />
+                        <img class="greetings__image" :src="main[0].url" :alt="main[0].alt" />
                     </div>
                     <div class="greetings__container-text">
-                        <p class="greetings__text">
-
-                            Данный сайт адресован учителям, учащимся и их родителям.
-                            Материалы сайта могут быть полезны также педагогам
-                            дополнительного образования, методистам. На страницах сайта вы
-                            можете познакомиться с авторскими разработками уроков, статьями
-                            по актуальным вопросам преподавания географии, материалами к
-                            учебным занятиям.
-                        </p>
-                        <p class="greetings__text">
-
-                            Цель создания сайта - формирование
-                            информационно-образовательного пространства для взаимодействия c
-                            коллегами, учащимися и их родителями.
-                        </p>
-                        <p class="greetings__text">
-                            Буду рада сотрудничеству с вами!
-                        </p>
-                        <p class="greetings__text">
-                            Предлагаю Вам прочитать моё эссе под названием "Я учитель!"
+                        <p class="greetings__text" v-for="sentence in main[0].text">
+                            {{ sentence }}
                         </p>
                         <div class="header__button-container">
                             <button class="header__button-esse">
@@ -66,14 +55,14 @@ definePageMeta({
     </ClientOnly>
 </template>
 
-<style scoped lang="scss" >
+<style scoped lang="scss">
 .content {}
 
 .greetings {}
 
 .greetings__title {
     margin: 0;
-    max-width: 1000px;
+    max-width: 800px;
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 20px;
     line-height: 1.15;
@@ -208,4 +197,3 @@ definePageMeta({
     }
 }
 </style>
-

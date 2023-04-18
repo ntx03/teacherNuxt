@@ -3,7 +3,6 @@
 
         <Head>
             <Title>Учитель Коротаева А.Ю.</Title>
-
         </Head>
         <NuxtLayout>
             <NuxtPage />
@@ -24,7 +23,9 @@
     position: relative;
 }
 </style>
+
 <script setup>
 const show = useShowSpinner();
 const showModal = useShowModal();
+
 </script>

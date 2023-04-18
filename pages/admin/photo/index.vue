@@ -1,7 +1,7 @@
 <script setup>
-import { createNews } from '~/utils/api';
+import { createPhoto, getPhoto } from '~/utils/photo/apiPhoto';
 import { newsList } from '~/utils/api';
-import { useNews } from '~/composables/news/useNews';
+import { usePhotos } from '~/composables/photo/usePhotos';
 import { useModalText } from '~/composables/news/useModalText';
 
 definePageMeta({
@@ -17,50 +17,56 @@ const validate = ref(true);
 const validateButtonAddPhoto = ref(true);
 const idNews = ref('');
 
-const modal = useShowModalDeleteNews();
-const modalText = useModalText();
+//const modal = useShowModalDeleteNews();
+//const modalText = useModalText();
 
-const news = useNews();
+const photos = usePhotos();
 
 const object = ref({
     name: '',
-    date: '',
-    description: '',
     photo: [{
         link: '',
         name: ''
     },]
 });
-const getNews = async () => {
-    const res = await newsList();
+const getPhotos = async () => {
+    const res = await getPhoto();
     console.log(res);
     if (res.length > 0) {
-        news.value = res.reverse();
+        photos.value = res.reverse();
     }
 }
-getNews();
+getPhotos();
 
 watch((object.value), () => {
-    const arr = [];
     const url = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/
-
-    if (object.value.date.length && object.value.description.length && object.value.name.length > 5) {
+    if (object.value.name.length > 5) {
         validateName.value = false;
     } else {
         validateName.value = true;
     }
-
     object.value.photo.forEach((i) => {
-        i.link.match(url) ? arr.push(0) : arr.push(1);
+        if (i.link.match(url)) {
+            validateUrl.value = false;
+        } else {
+            validateUrl.value = true;
+        }
     })
 
-    arr.reduce((a, b) => a + b) === 0 ? validateUrl.value = false : validateUrl.value = true;
+    if (!validateName.value && !validateUrl.value) {
+        validate.value = false;
+    } else {
+        validate.value = true;
+    }
 
-    !validateName.value && !validateUrl.value ? validate.value = false : validate.value = true;
 });
 
 watch((arr.value), () => {
-    arr.value.length > 5 ? validateButtonAddPhoto.value = false : validateButtonAddPhoto.value = true;
+    if (arr.value.length > 5) {
+        validateButtonAddPhoto.value = false;
+    } else {
+        validateButtonAddPhoto.value = true;
+    }
 })
 
 /**
@@ -68,10 +74,11 @@ watch((arr.value), () => {
  */
 const submit = (e) => {
     e.preventDefault();
-    createNews(object.value)
+    createPhoto(object.value)
         .then((res) => {
-            alert("Новость успешно создана!");
-            news.value.push(object.value);
+            console.log(res);
+            alert("Блок с фотографиями успешно добавлен!");
+            // news.value.push(object.value);
         })
         .catch((e) => console.log(e));
 }
@@ -94,8 +101,6 @@ const addPhoto = (e) => {
 const clearForm = () => {
     object.value = {
         name: '',
-        date: '',
-        description: '',
         photo: [{
             link: '',
             name: ''
@@ -120,23 +125,13 @@ const showModal = (id, text) => {
 
 <template >
     <ClientOnly>
-        <h2 class="title">ДОБАВИТЬ НОВОСТЬ</h2>
+        <h2 class="title">ДОБАВИТЬ БЛОК С ФОТОГРАФИЯМИ</h2>
         <form class="form">
             <div class="form__title_notification"> * - обязятельно к заполению</div>
-            <div class="input__container">
-                <div class="input__box_data">
-                    <p class="form__title">Введите дату новости *</p>
-                    <input class="form__input" type="date" v-model="object.date" />
-                </div>
-                <div class="input__box_name">
-                    <p class="form__title">Введите название новости *</p>
-                    <input class="form__input" type="text" v-model="object.name"
-                        placeholder="Название новости должно быть больше пяти символов" />
-                </div>
-            </div>
+
             <div class="input__box_description">
-                <p class="form__title">Введите описание новости *</p>
-                <textarea class="form__input form__input_description" type="text" v-model="object.description"
+                <p class="form__title">Введите название блока с новостями *</p>
+                <textarea class="form__input form__input_description" type="text" v-model="object.name"
                     placeholder="Описание новости должно быть больше семи символов" />
             </div>
             <div class="input__container input__container_photo">
@@ -158,20 +153,18 @@ const showModal = (id, text) => {
             <button :disabled="validate" class="form__button " :class="{ 'form__button_disabled': validate }"
                 @click="submit">Отправить</button>
         </form>
-        <h2 class="title" v-show="news.length > 0">УДАЛИТЬ НОВОСТЬ</h2>
+        <h2 class="title" v-show="photos.length > 0">УДАЛИТЬ БЛОК ФОТОГРАФИЙ</h2>
         <div class="delete__wrapper">
-            <div class="delete" v-for="index in news">
+            <div class="delete" v-for="index in photos">
                 <div class="delete__news-container">
                     <p class="delete__news-name delete__news-name_header">Название: </p>
                     <p class="delete__news-name">{{ index.name }}</p>
-                    <p class="delete__news-name delete__news-name_header">Описание: </p>
-                    <p class="delete__news-name">{{ index.description }}</p>
                 </div>
                 <button class="delete__news-button" @click="showModal(index._id, index.name)">Удалить</button>
 
             </div>
         </div>
-        <WarningModal v-show="modal" :id="idNews" />
+        <!-- <WarningModal v-show="modal" :id="idNews" /> -->
     </ClientOnly>
 </template>
 
