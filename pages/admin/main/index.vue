@@ -1,6 +1,6 @@
 <script setup>
 import { useMain } from '../../../composables/main/useMain';
-import { updateTitle, updateText, updatePhoto } from '../../../utils/main/apiMain';
+import { updateTitle, updateText, updatePhoto } from '../../../utils/api/apiMain';
 
 
 

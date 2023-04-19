@@ -1,6 +1,7 @@
 <script setup>
 const button = useButton();
 const route = useRoute();
+
 const main = ref(false);
 const about = ref(false);
 const student = ref(false);
@@ -38,6 +39,7 @@ if (route.fullPath == "/contacts") {
 if (route.fullPath == "/news") {
     news.value = true;
 }
+
 watch(route, () => {
     route.fullPath == "/" ? main.value = true : main.value = false;
     route.fullPath == "/aboutme" ? about.value = true : about.value = false;

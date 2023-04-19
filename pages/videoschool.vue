@@ -5,7 +5,7 @@
             <div className="video__container">
                 <p className="video__text-heaher">Когда мы вместе - это сила!</p>
                 <div className="video__block">
-
+                    <VideoCard :link="item.link" :name="item.name" v-for="item in videoSchool" />
                     <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239050&hash=ce84ede5e0ca09bf&hd=2'"
                         :name="'Флэшмоб ко Дню студента, учащиеся МАОУ исетской СОШ 1 поздравляют с Днём студента.'" />
 
@@ -21,6 +21,8 @@
     </main>
 </template>
 <script setup>
+import { useVideosSchool } from '../composables/video/useVideosSchool';
+const videoSchool = useVideosSchool();
 definePageMeta({
     layout: "header",
 })

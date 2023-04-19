@@ -1,4 +1,4 @@
-import { checkErrorJSON, baseUrl } from '../api';
+import { checkErrorJSON, baseUrl } from './api';
 /**
  * Получаем все для главной страницы
  * @returns объект с данными

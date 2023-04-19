@@ -1,3 +1,12 @@
+<script setup>
+import MenuAdmin from '~/components/Admin/MenuAdmin.vue';
+
+const logout = () => {
+    localStorage.removeItem('token');
+    navigateTo('/admin');
+}
+
+</script>
 <template>
     <section class="admin">
         <div class="exit__box">
@@ -7,15 +16,9 @@
         <h1 class="title">Административная панель</h1>
         <MenuAdmin />
         <slot />
-
     </section>
 </template>
-<script setup>
-const logout = () => {
-    localStorage.removeItem('token');
-    navigateTo('/admin');
-}
-</script>
+
 <style scoped lang="scss">
 .exit {
     width: max-content;

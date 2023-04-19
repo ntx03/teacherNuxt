@@ -1,6 +1,6 @@
 <script setup>
-import { createNews } from '~/utils/api';
-import { newsList } from '~/utils/api';
+import { createNews } from '~/utils/api/api';
+import { newsList } from '~/utils/api/api';
 import { useNews } from '~/composables/news/useNews';
 import { useModalText } from '~/composables/news/useModalText';
 
@@ -33,7 +33,6 @@ const object = ref({
 });
 const getNews = async () => {
     const res = await newsList();
-    console.log(res);
     if (res.length > 0) {
         news.value = res.reverse();
     }

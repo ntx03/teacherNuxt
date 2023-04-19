@@ -1,5 +1,5 @@
 <script setup>
-import { autorization } from '~/utils/api';
+import { autorization } from '~/utils/api/api';
 
 const name = ref('');
 const password = ref('');
@@ -46,8 +46,8 @@ const goAutorization = (name, password) => {
         </div>
         <div class="admin__text-error-box">
           <!-- <p class="errorAuth">
-                       Неправильный логин или пароль
-                          </p> -->
+                         Неправильный логин или пароль
+                            </p> -->
         </div>
         <button class="admin__button" @click="goAutorization(name, password)">
           Войти

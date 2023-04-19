@@ -1,7 +1,9 @@
 <script setup>
-import { deleteNews } from '~/utils/api';
-import { useNews } from '../composables/news/useNews';
-import { useModalText } from '~/composables/news/useModalText';
+import { deletePhoto } from '~/utils/api/apiPhoto';
+import { usePhotos } from '../../composables/photo/usePhotos';
+import { useModalTextPhoto } from '../../composables/photo/useModalTextPhoto';
+import { useShowModalPhoto } from '../../composables/photo/useShowModalPhoto';
+
 const props = defineProps({
     id: {
         type: String,
@@ -9,13 +11,13 @@ const props = defineProps({
     },
 
 })
-const modal = useShowModalDeleteNews();
-const news = useNews();
-const modalText = useModalText();
+const modal = useShowModalPhoto();
+const photo = usePhotos();
+const modalText = useModalTextPhoto();
 
 const dellNews = async () => {
-    const array = JSON.parse(JSON.stringify(news.value));
-    const res = await deleteNews(props.id);
+    const array = JSON.parse(JSON.stringify(photo.value));
+    const res = await deletePhoto(props.id);
     try {
         modal.value = false;
         console.log(res);
@@ -26,7 +28,7 @@ const dellNews = async () => {
             }
         }
         array.splice(index, 1);
-        news.value = array;
+        photo.value = array;
     } catch {
         console.log(e);
     }
@@ -36,7 +38,7 @@ const dellNews = async () => {
 </script>
 
 <template >
-    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="афд">
+    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 

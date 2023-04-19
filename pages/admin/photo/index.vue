@@ -1,8 +1,9 @@
 <script setup>
-import { createPhoto, getPhoto } from '~/utils/photo/apiPhoto';
-import { newsList } from '~/utils/api';
-import { usePhotos } from '~/composables/photo/usePhotos';
-import { useModalText } from '~/composables/news/useModalText';
+import { createPhoto, getPhoto } from '../../../utils/api/apiPhoto';
+import { usePhotos } from '../../../composables/photo/usePhotos';
+import { useShowModalPhoto } from '../../../composables/photo/useShowModalPhoto';
+import { useModalTextPhoto } from '../../../composables/photo/useModalTextPhoto';
+import DeleteModalPhotoBlock from '../../../components/Admin/DeleteModalPhotoBlock.vue'
 
 definePageMeta({
     layout: "admin",
@@ -17,8 +18,8 @@ const validate = ref(true);
 const validateButtonAddPhoto = ref(true);
 const idNews = ref('');
 
-//const modal = useShowModalDeleteNews();
-//const modalText = useModalText();
+const modal = useShowModalPhoto();
+const modalText = useModalTextPhoto();
 
 const photos = usePhotos();
 
@@ -31,7 +32,6 @@ const object = ref({
 });
 const getPhotos = async () => {
     const res = await getPhoto();
-    console.log(res);
     if (res.length > 0) {
         photos.value = res.reverse();
     }
@@ -164,7 +164,7 @@ const showModal = (id, text) => {
 
             </div>
         </div>
-        <!-- <WarningModal v-show="modal" :id="idNews" /> -->
+        <DeleteModalPhotoBlock v-show="modal" :id="idNews" />
     </ClientOnly>
 </template>
 

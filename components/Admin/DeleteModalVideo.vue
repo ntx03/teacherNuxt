@@ -1,21 +1,34 @@
 <script setup>
-import { deleteNews } from '~/utils/api/api';
-import { useNews } from '../composables/news/useNews';
-import { useModalText } from '~/composables/news/useModalText';
+import { deleteVideo, deleteVideoSchool } from '~/utils/api/apiVideo';
+import { useVideos } from '../../composables/video/useVideos';
+import { useModalTextVideo } from '../../composables/video/useModalTextVideo';
+import { useShowModalVideo } from '../../composables/video/useShowModalVideo';
+import { useVideosSchool } from '../../composables/video/useVideosSchool';
+import { useDelMarkerForModal } from '../../composables/video/useDelMarkerForModal';
+
 const props = defineProps({
     id: {
         type: String,
-        require: true
     },
 
 })
-const modal = useShowModalDeleteNews();
-const news = useNews();
-const modalText = useModalText();
+const modal = useShowModalVideo();
+const videos = useVideos();
+const videosSchool = useVideosSchool();
+const modalText = useModalTextVideo();
+const marker = useDelMarkerForModal();
 
-const dellNews = async () => {
-    const array = JSON.parse(JSON.stringify(news.value));
-    const res = await deleteNews(props.id);
+const getDellFunction = () => {
+    if (marker.value) {
+        return dellVideoSchool();
+    } else {
+        return dellVideo();
+    }
+}
+
+const dellVideo = async () => {
+    const array = JSON.parse(JSON.stringify(videos.value));
+    const res = await deleteVideo(props.id);
     try {
         modal.value = false;
         console.log(res);
@@ -26,17 +39,35 @@ const dellNews = async () => {
             }
         }
         array.splice(index, 1);
-        news.value = array;
+        videos.value = array;
     } catch {
         console.log(e);
     }
+}
 
+const dellVideoSchool = async () => {
+    const array = JSON.parse(JSON.stringify(videosSchool.value));
+    const res = await deleteVideoSchool(props.id);
+    try {
+        modal.value = false;
+        console.log(res);
+        let index = null;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i]._id == props.id) {
+                index = i;
+            }
+        }
+        array.splice(index, 1);
+        videosSchool.value = array;
+    } catch {
+        console.log(e);
+    }
 }
 
 </script>
 
 <template >
-    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="афд">
+    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
@@ -57,7 +88,7 @@ const dellNews = async () => {
                             </div>
                             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                                 <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Удаление
-                                    новости</h3>
+                                    новости!!!!!!!!!</h3>
                                 <div class="mt-2">
                                     <p class="text-sm text-gray-500">Вы действительно хотете удалить новость {{ modalText
                                     }}?
@@ -69,7 +100,7 @@ const dellNews = async () => {
                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                         <button type="button"
                             class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                            @click="dellNews">Удалить</button>
+                            @click="getDellFunction()">Удалить</button>
                         <button type="button"
                             class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                             @click="() => modal = false">Отмена</button>

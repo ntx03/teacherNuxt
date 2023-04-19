@@ -1,5 +1,15 @@
 <script setup>
-const video = 'https://rutube.ru/play/embed/ed0f54b70b230b7d4305a56ea1c413b8';
+import { getVideo } from '../utils/api/apiVideo'
+import { useVideos } from '../composables/video/useVideos'
+const video = useVideos();
+getVideo()
+    .then((res) => {
+        console.log(res);
+        video.value = res;
+    })
+    .catch((e) => {
+        console.log(e);
+    })
 definePageMeta({
     layout: "header",
 })
@@ -11,6 +21,7 @@ definePageMeta({
             <div className="video__container">
                 <p className="video__text-heaher">Выбирай свою будущую профессию уже сейчас!</p>
                 <div className="video__block">
+                    <VideoCard :link="item.link" :name="item.name" v-for="item in video" />
                     <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239053&hash=33d670d9fc0404bb&hd=2'"
                         :name="'КНАУФ, основанная в 1932 году, является семейной компанией попроизводству строительных материалов и систем, в которой трудится множество сотрудников различных национальностей.'" />
                     <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239048&hash=b116691bbe5a2a5b&hd=2'"

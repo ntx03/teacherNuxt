@@ -1,4 +1,4 @@
-import { checkErrorJSON, baseUrl } from '../api';
+import { checkErrorJSON, baseUrl } from './api';
 
 /**
  * Получаем все фото
@@ -35,5 +35,21 @@ export const createPhoto = async (obj: createBlockPhoto) => {
       photo: obj.photo,
     }),
   });
+  return checkErrorJSON(res);
+};
+
+/**
+ * удаление блока с фото
+ */
+export const deletePhoto = async (id: string) => {
+  const token = localStorage.getItem('token');
+  const res = await fetch(baseUrl + `photo?id=${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      authorization: `Bearer ${token}`,
+    },
+  });
+
   return checkErrorJSON(res);
 };

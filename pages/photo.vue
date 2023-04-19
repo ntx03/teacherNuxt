@@ -1,14 +1,26 @@
 <script setup>
+import { usePhotos } from '../composables/photo/usePhotos';
 import { artek, cozvezdie, lager, sixclass, flachmob, forum, police, court, iset, containerCompany, fathersDay } from '../utils/photoArray';
+import { getPhoto } from '../utils/api/apiPhoto';
 
 definePageMeta({
     layout: "header",
 })
+const photos = usePhotos();
+
+getPhoto()
+    .then((res) => {
+        photos.value = res.reverse();
+    })
+    .catch((e) => {
+        console.log(e);
+    })
 
 </script>
 <template>
     <main className="content">
         <section className="photo">
+            <PhotoBlock :title="item.name" :array-photo="item.photo" v-for="item in photos" />
             <PhotoBlock :title="'Обучение в Артеке. Июль 2021г.'" :array-photo="artek" />
             <PhotoBlock :title="'Региональный конкурс управленческих команд Созвездие'" :array-photo="cozvezdie" />
             <PhotoBlock :title="' Лагерь остров детства, ЮИД 9 декабря 2021г.'" :array-photo="lager" />

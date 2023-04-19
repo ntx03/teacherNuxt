@@ -1,20 +1,33 @@
-<template>
-    <div class="parents__menu">
-        <ul class="parents__menu-container">
-            <!-- <HeaderMenuItem :way="'/students'" :text="'ПРАВИЛА БЕЗОПАСНОСТИ'" :onPage="students" /> -->
-            <HeaderMenuItem :way="'/admin/main'" :text="'ГЛАВНАЯ'" :onPage="main" />
-            <HeaderMenuItem :way="'/admin/photo'" :text="'ФОТО'" :onPage="photo" />
-            <HeaderMenuItem :way="'/admin/news'" :text="'НОВОСТИ'" :onPage="news" />
-
-        </ul>
-    </div>
-</template>
-<script scoped setup>
+<script  setup>
 const route = useRoute();
+
 const news = ref(false);
+const video = ref(false);
 const photo = ref(false);
 const main = ref(false);
-const examination = ref(false);
+
+const arrMenu = ref([
+    {
+        way: '/admin/main',
+        text: 'ГЛАВНАЯ',
+        onPage: main
+    },
+    {
+        way: '/admin/video',
+        text: 'ВИДЕО',
+        onPage: video
+    },
+    {
+        way: '/admin/photo',
+        text: 'ФОТО',
+        onPage: photo
+    },
+    {
+        way: '/admin/news',
+        text: 'НОВОСТИ',
+        onPage: news
+    },
+])
 
 if (route.fullPath == "/admin/news") {
     news.value = true;
@@ -25,15 +38,26 @@ if (route.fullPath == "/admin/main") {
 if (route.fullPath == "/admin/photo") {
     photo.value = true;
 }
-// if (route.fullPath == "/studentsexamination") {
-//     examination.value = true;
-// }
+if (route.fullPath == "/admin/video") {
+    video.value = true;
+}
+
 watch(route, () => {
     route.fullPath == "/admin/news" ? news.value = true : news.value = false;
     route.fullPath == "/admin/main" ? main.value = true : main.value = false;
     route.fullPath == "/admin/photo" ? photo.value = true : photo.value = false;
+    route.fullPath == "/admin/video" ? video.value = true : video.value = false;
 })
 </script>
+
+<template>
+    <div class="parents__menu">
+        <ul class="parents__menu-container">
+            <HeaderMenuItem :way="item.way" :text="item.text" :onPage="item.onPage" v-for="item in arrMenu" />
+        </ul>
+    </div>
+</template>
+
 <style scoped lang="scss">
 .parents__menu {
     max-width: max-content;

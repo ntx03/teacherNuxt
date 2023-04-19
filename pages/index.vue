@@ -1,6 +1,6 @@
 <script setup>
 import { useMain } from "../composables/main/useMain";
-import { mainData } from '../utils/main/apiMain';
+import { mainData } from '../utils/api/apiMain';
 
 const popup = usePopup();
 const image = usePopupImage();

@@ -25,7 +25,18 @@
 </style>
 
 <script setup>
+import { getVideoSchool } from './utils/api/apiVideo';
+import { useVideosSchool } from './composables/video/useVideosSchool';
 const show = useShowSpinner();
 const showModal = useShowModal();
+const videoSchool = useVideosSchool();
+
+getVideoSchool()
+    .then((res) => {
+        videoSchool.value = res;
+    })
+    .catch((e) => {
+        console.log(e);
+    })
 
 </script>
