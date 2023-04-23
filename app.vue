@@ -1,3 +1,35 @@
+<script setup>
+import { getVideoSchool, getVideo } from './utils/api/apiVideo';
+import { mainData } from './utils/api/apiMain';
+import { useVideosSchool } from './composables/video/useVideosSchool';
+import { useVideos } from './composables/video/useVideos';
+import { useMain } from './composables/main/useMain';
+
+const show = useShowSpinner();
+const showModal = useShowModal();
+const videoSchool = useVideosSchool();
+const video = useVideos();
+const main = useMain();
+
+const downloadVideo = async () => {
+    const res = await getVideo();
+    video.value = res.reverse();
+}
+downloadVideo();
+
+const downloadVideoSchool = async () => {
+    const res = await getVideoSchool();
+    videoSchool.value = res.reverse();
+}
+downloadVideoSchool();
+
+const downloadDataForMainPage = async () => {
+    const res = await mainData();
+    main.value = res;
+}
+downloadDataForMainPage(0);
+</script>
+
 <template>
     <div class="page">
 
@@ -24,19 +56,3 @@
 }
 </style>
 
-<script setup>
-import { getVideoSchool } from './utils/api/apiVideo';
-import { useVideosSchool } from './composables/video/useVideosSchool';
-const show = useShowSpinner();
-const showModal = useShowModal();
-const videoSchool = useVideosSchool();
-
-getVideoSchool()
-    .then((res) => {
-        videoSchool.value = res;
-    })
-    .catch((e) => {
-        console.log(e);
-    })
-
-</script>

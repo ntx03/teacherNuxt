@@ -1,8 +1,10 @@
 <script setup>
 import { professionalDevelopment, myAchievements, studentsAchievements } from '../utils/photoAboutMe';
+
 definePageMeta({
     layout: "header",
 })
+
 const popup = usePopup();
 const image = usePopupImage();
 const name = usePopupName();
@@ -12,6 +14,7 @@ const openPopup = (e) => {
     image.value = e.target.src;
     name.value = e.target.alt;
 }
+
 </script>
 <template>
     <ClientOnly>
@@ -45,8 +48,8 @@ const openPopup = (e) => {
                                 мероприятия.
                             </p>
                             <p class="me__text">
-                            В настоящее время увлекаюсь чтением педагогической литературы, вышиваю крестиком, бисером,
-                            люблю
+                                В настоящее время увлекаюсь чтением педагогической литературы, вышиваю крестиком, бисером,
+                                люблю
                                 готовить и проводить время с
                                 семьей, веду блог в инстаграме «Навигатора детства».
                             </p>
@@ -59,10 +62,6 @@ const openPopup = (e) => {
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
-                            <!-- <video controls class="me__image">
-                                                                                    <source :src="video" type="video/mp4" />
-                                                                                </video> -->
-
                         </div>
                     </div>
                     <div class="me__container-documents">

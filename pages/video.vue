@@ -2,14 +2,13 @@
 import { getVideo } from '../utils/api/apiVideo'
 import { useVideos } from '../composables/video/useVideos'
 const video = useVideos();
-getVideo()
-    .then((res) => {
-        console.log(res);
-        video.value = res;
-    })
-    .catch((e) => {
-        console.log(e);
-    })
+// getVideo()
+//     .then((res) => {
+//         video.value = res;
+//     })
+//     .catch((e) => {
+//         console.log(e);
+//     })
 definePageMeta({
     layout: "header",
 })
@@ -22,7 +21,7 @@ definePageMeta({
                 <p className="video__text-heaher">Выбирай свою будущую профессию уже сейчас!</p>
                 <div className="video__block">
                     <VideoCard :link="item.link" :name="item.name" v-for="item in video" />
-                    <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239053&hash=33d670d9fc0404bb&hd=2'"
+                    <VideoCard :link="'https://rutube.ru/play/embed/0c91a2b2456067d50b8e54e2e4ad99c7'"
                         :name="'КНАУФ, основанная в 1932 году, является семейной компанией попроизводству строительных материалов и систем, в которой трудится множество сотрудников различных национальностей.'" />
                     <VideoCard :link="'https://vk.com/video_ext.php?oid=4391481&id=456239048&hash=b116691bbe5a2a5b&hd=2'"
                         :name="'СИБУР Тобольск (ранее — Тобольский нефтехимический комбинат,Тобольск-Нефтехим) — российское (ранее советское) нефтехимическое предприятие, расположенное в городе Тобольске Тюменской области. Предназначено для глубокой переработки широкой фракции лёгких углеводородов.'" />

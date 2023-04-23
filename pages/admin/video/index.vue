@@ -55,7 +55,7 @@ const objectSchool = ref({
 
 getVideo()
     .then((res) => {
-        videos.value = res;
+        videos.value = res.reverse();
     })
     .catch((e) => {
         console.log(e);
@@ -63,7 +63,7 @@ getVideo()
 
 getVideoSchool()
     .then((res) => {
-        videosSchool.value = res;
+        videosSchool.value = res.reverse();
     })
     .catch((e) => {
         console.log(e);

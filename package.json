@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "deploy": "npm run build && scp -r ./.output/* root@83.69.236.12:/root/front",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

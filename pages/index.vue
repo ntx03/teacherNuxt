@@ -1,20 +1,14 @@
 <script setup>
 import { useMain } from "../composables/main/useMain";
-import { mainData } from '../utils/api/apiMain';
+
+definePageMeta({
+    layout: "header",
+})
 
 const popup = usePopup();
 const image = usePopupImage();
 const name = usePopupName();
 const main = useMain();
-
-mainData()
-    .then((res) => {
-        console.log(res);
-        main.value = res;
-    })
-    .catch((e) => {
-        console.log(e);
-    })
 
 const openPopup = (e) => {
     popup.value = true;
@@ -22,14 +16,11 @@ const openPopup = (e) => {
     name.value = e.target.alt;
 }
 
-definePageMeta({
-    layout: "header",
-})
 </script>
 <template>
     <ClientOnly>
-        <main class="content">
-            <section class="greetings">
+        <section class="content" v-show="main.length > 0">
+            <div class="greetings">
                 <h2 class="greetings__title" v-for="sentence in main[0].title">
                     {{ sentence }}
                 </h2>
@@ -50,8 +41,8 @@ definePageMeta({
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
     </ClientOnly>
 </template>
 
