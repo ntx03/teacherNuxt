@@ -1,19 +1,73 @@
 <script setup>
 import { useMain } from "../composables/main/useMain";
+import { usePopupTest } from "~/composables/forTest/usePopupTest";
 
 definePageMeta({
     layout: "header",
 })
 
+const popupState = usePopupTest()
 const popup = usePopup();
 const image = usePopupImage();
 const name = usePopupName();
 const main = useMain();
 
+function getScrollWidth() {
+    var inner = document.createElement('p');
+    inner.style.width = "100%";
+    inner.style.height = "200px";
+
+    var outer = document.createElement('div');
+    outer.style.position = "absolute";
+    outer.style.top = "0px";
+    outer.style.left = "0px";
+    outer.style.visibility = "hidden";
+    outer.style.width = "200px";
+    outer.style.height = "150px";
+    outer.style.overflow = "hidden";
+    outer.appendChild(inner);
+    document.body.appendChild(outer);
+    var w1 = inner.offsetWidth;
+    outer.style.overflow = 'scroll';
+    var w2 = inner.offsetWidth;
+
+    if (w1 == w2) {
+
+        w2 = outer.clientWidth;
+    }
+
+    document.body.removeChild(outer);
+
+    return (w1 - w2);
+};
+
 const openPopup = (e) => {
-    popup.value = true;
+    popup.value = false;
     image.value = e.target.src;
     name.value = e.target.alt;
+}
+
+const closeEsc = (e) => {
+    const page = document.querySelector("body");
+    if (e.keyCode === 27) {
+        // надо вставить конкретный стейт конкретного модального окна
+        popupState.value = true;
+
+        document.removeEventListener("keydown", closeEsc);
+        page.style.overflow = "";
+        page.style.paddingRight = `0px`;
+    }
+};
+/**
+* Открываем модальное окно 
+*/
+const openCustomPopup = (e) => {
+    const page = document.querySelector("body");
+    e.preventDefault();
+    page.style.overflow = "hidden";
+    page.style.paddingRight = `${getScrollWidth()}px`;
+    document.addEventListener("keydown", closeEsc);
+    popupState.value = false;
 }
 
 </script>
@@ -38,11 +92,15 @@ const openPopup = (e) => {
                                     Прочитать
                                 </NuxtLink>
                             </button>
+                            <button class="header__button-esse" @click="openCustomPopup">тест модального окна
+
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <popupTest />
     </ClientOnly>
 </template>
 

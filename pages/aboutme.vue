@@ -1,6 +1,7 @@
 <script setup>
 import { professionalDevelopment, myAchievements, studentsAchievements } from '../utils/photoAboutMe';
 
+
 definePageMeta({
     layout: "header",
 })

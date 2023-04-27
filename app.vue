@@ -5,6 +5,7 @@ import { useVideosSchool } from './composables/video/useVideosSchool';
 import { useVideos } from './composables/video/useVideos';
 import { useMain } from './composables/main/useMain';
 
+
 const show = useShowSpinner();
 const showModal = useShowModal();
 const videoSchool = useVideosSchool();

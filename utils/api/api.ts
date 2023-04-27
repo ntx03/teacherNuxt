@@ -10,7 +10,7 @@ export const checkErrorJSON = (res: any) => {
   return Promise.reject(`Ошибка: ${res.status}`);
 };
 
-export const baseUrl: string = 'https://качур72.рф/api/';
+export const baseUrl: string = 'http://localhost:4000/api/';
 
 export const autorization = async (name: String, password: String) => {
   const res = await fetch(baseUrl + 'signin', {
